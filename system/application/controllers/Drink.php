@@ -39,5 +39,13 @@ class Drink extends Controller {
 		$data['result'] = $this->Drink_model->get_all_drinks();
 		$this->load->view('Drink/Drink_view', $data);
 	}
+	
+	function search($name)
+	{
+		$this->load->model('Drink_model');
+		$this->Drink_model->search_drink($name);
+		$data['result'] = $this->Drink_model->get_all_drinks();
+		$this->load->view('Drink/Drink_view', $data);
+	}
 }
 ?>

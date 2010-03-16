@@ -23,5 +23,10 @@ class Drink_model extends Model {
 	{
 		$query = $this->db->query("DELETE FROM drink WHERE name='".$name."'");
 	}
+	
+	function search_drink($name)
+	{
+		$query = $this->db->query("SELECT FROM drink WHERE name LIKE '"%.$name.%"'");
+	}
 }
 ?>
