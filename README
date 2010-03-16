@@ -1,2 +1,5 @@
 Go to http://localhost/index.php/Drink to see codeignitor in action
 You will have to change the database config in the system/application/config/database.php
+
+Added the header and footer files.  See the drink example for how to use it.
+Also fixed the search for drinks.  To use it go to http://localhost/index.php/drink/search/query

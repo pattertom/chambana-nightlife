@@ -26,7 +26,8 @@ class Drink_model extends Model {
 	
 	function search_drink($name)
 	{
-		$query = $this->db->query("SELECT FROM drink WHERE name LIKE '"%.$name.%"'");
+		$query = $this->db->query("SELECT * FROM drink WHERE name LIKE '%".$name."%'");
+		return $query;
 	}
 }
 ?>
