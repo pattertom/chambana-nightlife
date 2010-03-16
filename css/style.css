@@ -1,0 +1,118 @@
+.site_top {
+	background: url(../images/header.png);
+	position: relative;
+	width: 1036px;
+	height: 128px;
+	z-index: 8;
+	margin: auto;
+}
+
+#buttons {
+	position: absolute;
+	top: 86px;
+	left: 2px;
+	color: white;
+	font-family: verdana;
+	font-size: 11pt;
+}
+ 
+#buttons a:link, #buttons a:visited {
+	display: inline-block;
+	position: relative;
+	top: 1px;
+	width: auto;
+	height: 23px;
+	color: white;
+	padding: 7px 15px 0px 15px;
+	font-family: verdana;
+	font-size: 11pt;
+	text-decoration: none;
+	margin-right: -.3em;
+}
+ 
+* html #buttons a:link, #buttons a:visited {
+	display: inline-block;
+	position: relative;
+	top: 1px;
+	width: auto;
+	height: 23px;
+	color: white;
+	padding: 7px 15px 0px 15px;
+	font-family: verdana;
+	font-size: 11pt;
+	text-decoration: none;
+	margin-right: -.3em;
+}
+ 
+#buttons a:hover {
+	display: inline-block;
+	width: auto;
+	height: 23px;
+	color: orange;
+	padding: 7px 15px 0px 15px;
+	font-family: verdana;
+	font-size: 11pt;
+	text-decoration: none;
+	margin-right: -.3em;
+	font-weight: bold;
+}
+ 
+* html #buttons a:hover {
+	display: inline-block;
+	width: auto;
+	height: 23px;
+	background-color: #ACACAC;
+	color: black;
+	padding: 7px 15px 0px 15px;
+	font-family: verdana;
+	font-size: 11pt;
+	text-decoration: none;
+	margin-right: -.3em;
+}
+
+a.black:link {color:#000000}      /* unvisited link */
+a.black:visited {color:#000000}  /* visited link */
+a.black:hover {color:#000000}  /* mouse over link */
+a.black:active {color:#000000}  /* selected link */
+
+.content {
+	position: relative;
+	height: auto;
+	width: 1021px;
+	min-height: 400px;
+	background-image:url(../images/body.png);
+	background-repeat:repeat-y;
+	padding: 7px 0px 0px 15px;
+	font-family: verdana;
+	font-size: 10pt;
+	margin: auto;
+	color: white;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+}
+
+.fail {
+    color: red;
+    font-weight: bold;
+}
+
+.input_box{
+	-x-system-font:none;
+	border:1px solid #2B7497;
+	color:#666666;
+	display:block;
+	font-family:arial;
+	font-size:11px;
+	font-size-adjust:none;
+	font-stretch:normal;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	height:20px;
+	line-height:normal;
+	padding:2px 3px 1px;
+	width:165px;
+}
