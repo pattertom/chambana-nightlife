@@ -31,9 +31,9 @@ class Drink extends Controller {
 		$this->load->model('Drink_model');
 		$name = $this->input->post('name');
 		$description = $this->input->post('description');
-		if($name && $description) {
-			$this->Drink_model->create_drink($name, $description);
-		}
+		
+		$this->Drink_model->create_drink($name, $description);
+		
 		$data['result'] = $this->Drink_model->get_all_drinks();
 		$this->load->view('header');
 		$this->load->view('Drink/Drink_view', $data);
