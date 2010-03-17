@@ -5,6 +5,7 @@
 <head>
 	<title>Welcome to CU Nightlife</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<script type="text/javascript" src="/scripts/common.js"></script>
 </head>
 <body bgcolor="#333333">
 	<div class="site_top">

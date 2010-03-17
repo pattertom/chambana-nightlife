@@ -3,7 +3,8 @@ $this->load->helper('url');
 $this->load->helper('form');
 
 echo form_open_multipart('drink/search');
-echo 'Search Drinks: ' . form_input('drink', 'Drink').'<br />';
+$js = 'onClick="clickIntoSearchBox()"';
+echo 'Search Drinks: ' . form_input('drink', 'Drink', $js).'<br />';
 echo form_submit('drink_search', 'Search');
 echo form_close();
 
