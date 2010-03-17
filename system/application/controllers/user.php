@@ -53,9 +53,12 @@ class User extends Controller {
 		$this->load->view('footer');
 	}
 	
-	function search($username)
+	function search($username = "")
 	{
 		$this->load->model('user_model');
+		
+        $username = $username ? $username : $this->input->post('username');
+		
 		$data['result'] = $this->user_model->search_user($username);
 		$this->load->view('header');
 		$this->load->view('user/user_view', $data);

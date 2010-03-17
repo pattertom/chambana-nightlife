@@ -50,9 +50,12 @@ class Drink extends Controller {
 		$this->load->view('footer');
 	}
 	
-	function search($name)
+	function search($name = "")
 	{
 		$this->load->model('Drink_model');
+		
+		$name = $name ? $name : $this->input->post('drink');
+		
 		$data['result'] = $this->Drink_model->search_drink($name);
 		$this->load->view('header');
 		$this->load->view('Drink/Drink_view', $data);
