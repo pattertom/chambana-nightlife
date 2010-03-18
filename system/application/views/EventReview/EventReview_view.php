@@ -1,6 +1,11 @@
 <?php
  
 	$this->load->helper('url');
+	echo form_open_multipart('eventreview/search');
+	$js = 'onClick="clickIntoSearchBox()"';
+	echo 'Search Event Reviews: ' . form_input('event', 'Event', $js);
+	echo form_submit('event_review_search', 'Search');
+	echo form_close();
  
 	echo '<table border="1"><tr><td><b>Bar Review ID</b></td><td><b>User Name</b></td>
                                                 <td><b>Event Name</b></td>

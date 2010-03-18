@@ -12,6 +12,10 @@
 		<div id="buttons">
 			<a href="<?php echo site_url()?>">Home</a>
 			<a href="<?php echo site_url('drink')?>">Drinks</a>
+			<a href="<?php echo site_url('bar')?>">Bars</a>
+			<a href="<?php echo site_url('barreview')?>">Bar Reviews</a>
+			<a href="<?php echo site_url('event')?>">Events</a>
+			<a href="<?php echo site_url('eventreview')?>">Event Reviews</a>
 			<a href="<?php echo site_url('user')?>">User</a>
 			<?php if (!$this->session->userdata('logged_in'))
     			echo '<a href="'.site_url('login').'">Login</a>';

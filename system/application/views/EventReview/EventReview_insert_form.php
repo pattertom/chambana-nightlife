@@ -29,7 +29,7 @@ echo form_textarea('reviewContent', 'Review Content goes here').'<br />';
  
 echo 'Time Stamp: ' . form_input('ts', '').'<br />';
  
-echo form_submit('eventreview_submit', 'Create Event Review!');
+echo form_submit('event_review_submit', 'Create Event Review!');
 echo form_close();
  
 ?>

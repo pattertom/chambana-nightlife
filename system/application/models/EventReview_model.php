@@ -32,7 +32,7 @@ class EventReview_model extends Model {
 	
 	function search_event_reviews($name)
 	{
-		$query = $this->db->query("SELECT * FROM eventreview WHERE name LIKE '%".$name."%'");
+		$query = $this->db->query("SELECT * FROM eventreview WHERE reviewContent LIKE '%".$name."%'");
 		return $query;
 	}
 }

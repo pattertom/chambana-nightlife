@@ -29,11 +29,17 @@ class EventReview extends Controller {
 	function create()
 	{
 		$this->load->model('EventReview_model');
-		$name = $this->input->post('name');
-		$review = $this->input->post('review');
-		$rating = $this->input->post('rating');
+		$userName = $this->input->post('userName');
+        $eventName = $this->input->post('eventName');
+		$approvedByAdmin = $this->input->post('approvedByAdmin');
+        $rating = $this->input->post('rating');
+        $reviewContent = $this->input->post('reviewContent');
+        $ts = $this->input->post('ts');
 		
-		$this->EventReview_model->create_event_review($name, $review, $rating);
+		if($userName && $eventName && $approvedByAdmin && $rating && $reviewContent && $ts) {
+            $this->EventReview_model->create_event_review($userName, $barName, $approvedByAdmin,
+                                            $rating, $reviewContent, $ts);
+		}
 		
 		$data['result'] = $this->EventReview_model->get_all_event_reviews();
 		$this->load->view('header');

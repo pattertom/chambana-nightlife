@@ -4,7 +4,7 @@ $this->load->helper('form');
 
 echo form_open_multipart('drink/search');
 $js = 'onClick="clickIntoSearchBox()"';
-echo 'Search Drinks: ' . form_input('drink', 'Drink', $js).'<br />';
+echo 'Search Drinks: ' . form_input('drink', 'Drink', $js);
 echo form_submit('drink_search', 'Search');
 echo form_close();
 

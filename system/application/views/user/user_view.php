@@ -5,7 +5,7 @@ $admin = $this->session->userdata('admin');
 
 echo form_open_multipart('user/search');
 $js = 'onClick="clickIntoSearchBox()"';
-echo 'Search Users: ' . form_input('username', 'Username', $js).'<br />';
+echo 'Search Users: ' . form_input('username', 'Username', $js);
 echo form_submit('user_search', 'Search');
 echo form_close();
 
