@@ -17,6 +17,7 @@
 			<a href="<?php echo site_url('event')?>">Events</a>
 			<a href="<?php echo site_url('eventreview')?>">Event Reviews</a>
 			<a href="<?php echo site_url('user')?>">User</a>
+			<a href="<?php echo site_url('barspecial')?>">Specials</a>
 			<?php if (!$this->session->userdata('logged_in'))
     			echo '<a href="'.site_url('login').'">Login</a>';
     		    else
