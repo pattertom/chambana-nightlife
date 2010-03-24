@@ -12,9 +12,11 @@ class Dashboard extends Controller {
 	    {
 	        redirect('login/index');
 	    }
-
-	    $data['title']  = 'Dashboard | CU Nightlife';    
-	    $this->load->view('dashboard_view', $data);
+ 
+		$this->load->model('BarSpecial_model');
+		$data['result'] = $this->BarSpecial_model->get_todays_specials();
+		$data['title']  = 'Dashboard | CU Nightlife';   
+	    $this->load->view('Dashboard/dashboard_view', $data);
 	}
 }
 ?>

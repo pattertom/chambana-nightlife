@@ -8,7 +8,7 @@ echo 'Search Drinks: ' . form_input('drink', 'Drink', $js);
 echo form_submit('drink_search', 'Search');
 echo form_close();
 
-echo '<table border="1"><tr><td><b>Drink Name</b></td><td><b>Description</b></td></tr>';
+echo '<table border="1"><tr><th><b>Drink Name</b></th><th><b>Description</b></th></tr>';
 foreach ($result->result() as $row)
 {
 	echo '<tr><td>';

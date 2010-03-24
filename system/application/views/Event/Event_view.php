@@ -2,12 +2,12 @@
 
 	$this->load->helper('url');
 	
-	echo '<table border="1"><tr><td><b>Event ID</b></td><td><b>Name</b></td>
-                                                <td><b>Price</b></td>
-                                                <td><b>Type</b></td>
-                                                <td><b>Description</b></td>
-                                                <td><b>Date</b></td>
-                                                <td><b>Address</b></td></tr>';
+	echo '<table border="1"><tr><th><b>Event ID</b></th><th><b>Name</b></th>
+                                                <th><b>Price</b></th>
+                                                <th><b>Type</b></th>
+                                                <th><b>Description</b></th>
+                                                <th><b>Date</b></th>
+                                                <th><b>Address</b></th></tr>';
 	foreach ($result->result() as $row)
 	{
 		echo '<tr><td>';

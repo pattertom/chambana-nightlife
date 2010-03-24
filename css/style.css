@@ -5,6 +5,7 @@
 	height: 128px;
 	z-index: 8;
 	margin: auto;
+	border-top: 1px solid #000000;
 }
 
 #buttons {
@@ -87,6 +88,21 @@ a.black:active {color:#000000}  /* selected link */
 	font-size: 10pt;
 	margin: auto;
 	color: white;
+	border-bottom: 1px solid #000000;
+}
+
+.specialContent {
+	position: relative;
+	height: auto;
+	width: 1021px;
+	background-image:url(../images/specialMiddle.png);
+	background-repeat:repeat-y;
+	border-bottom: 1px solid #000000;
+	padding: 7px 0px 0px 15px;
+	font-family: verdana;
+	font-size: 10pt;
+	margin: auto;
+	color: white;
 }
 
 .success {
@@ -115,4 +131,17 @@ a.black:active {color:#000000}  /* selected link */
 	line-height:normal;
 	padding:2px 3px 1px;
 	width:165px;
+}
+
+td {
+	background-color: #D6D7D6;
+}
+
+th {
+	background-color:#f5812a;
+	text-align:left;
+}
+
+table {
+	border: solid #333333;
 }

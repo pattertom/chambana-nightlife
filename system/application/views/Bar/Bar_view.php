@@ -2,10 +2,10 @@
 	<?php
 	$this->load->helper('url');
 	
-	echo '<table border="1"><tr><td><b>Bar Name</b></td><td><b>Rating</b></td>
-                                                <td><b>Description</b></td>
-                                                <td><b>Specials</b></td>
-                                                <td><b>Address</b></td></tr>';
+	echo '<table border="1"><tr><th><b>Bar Name</b></th><th><b>Rating</b></th>
+                                                <th><b>Description</b></th>
+                                                <th><b>Specials</b></th>
+                                                <th><b>Address</b></th></tr>';
 	foreach ($result->result() as $row)
 	{
 		echo '<tr><td>';

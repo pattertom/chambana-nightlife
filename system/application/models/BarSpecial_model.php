@@ -14,6 +14,12 @@ class BarSpecial_model extends Model {
         return $query;
     }
 	
+	function get_todays_specials()
+	{
+		$query = $this->db->query("SELECT * FROM barspecial WHERE isWeekly = 1 AND weeklyDay LIKE  '%".date("l")."%'");
+		return $query;
+	}
+	
     function create_barspecial($barName, $isWeekly, $weeklyDay, $description, $dateSpecial)
 	{
 		if($dateSpecial != ""){

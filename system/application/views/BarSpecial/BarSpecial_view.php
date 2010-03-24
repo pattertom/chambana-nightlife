@@ -2,12 +2,12 @@
 
 	$this->load->helper('url');
 	
-	echo '<table border="1"><tr><td><b>Bar Special ID</b></td>
-                                                <td><b>Bar Name</b></td>
-                                                <td><b>isWeekly?</b></td>
-												<td><b>Day of week</b></td>
-                                                <td><b>Description</b></td>
-                                                <td><b>Date</b></td></tr>';
+	echo '<table><tr><th><b>Bar Special ID</b></th>
+                                                <th><b>Bar Name</b></th>
+                                                <th><b>isWeekly?</b></th>
+												<th><b>Day of week</b></th>
+                                                <th><b>Description</b></th>
+                                                <th><b>Date</b></th></tr>';
 	foreach ($result->result() as $row)
 	{
 		echo '<tr><td>';

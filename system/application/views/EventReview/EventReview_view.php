@@ -7,12 +7,12 @@
 	echo form_submit('event_review_search', 'Search');
 	echo form_close();
  
-	echo '<table border="1"><tr><td><b>Bar Review ID</b></td><td><b>User Name</b></td>
-                                                <td><b>Event Name</b></td>
-                                                <td><b>Approved?</b></td>
-                                                <td><b>Rating</b></td>
-                                                <td><b>Review Content</b></td>
-                                                <td><b>TS</b></td></tr>';
+	echo '<table border="1"><tr><th><b>Bar Review ID</b></th><th><b>User Name</b></th>
+                                                <th><b>Event Name</b></th>
+                                                <th><b>Approved?</b></th>
+                                                <th><b>Rating</b></th>
+                                                <th><b>Review Content</b></th>
+                                                <th><b>TS</b></td></th>';
 	foreach ($result->result() as $row)
 	{
 		echo '<tr><td>';

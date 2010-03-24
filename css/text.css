@@ -1,0 +1,28 @@
+.paragraph {
+	margin: 0px;
+	padding: 0px;
+	font-size: 11px;
+	color: #fff;
+	clear: both;
+	padding-bottom: 6px; 
+}
+	
+.subtitle{
+	display: block;
+	color: #666;
+	font-size: 9px;
+	padding-top: 5px;
+	margin-bottom: 2px;
+}
+	
+.title {
+	margin-bottom: 3px;
+	padding: 0px;
+	display: block;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 22px;
+	letter-spacing: -1px;
+	color: #aaaaaa;
+	line-height: 24px;
+}

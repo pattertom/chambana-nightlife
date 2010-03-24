@@ -47,11 +47,11 @@ class BarSpecial extends Controller {
 	
 	function delete($id)
 	{
-		$this->load->model('BarReview_model');
-		$this->BarReview_model->delete_barreview($id);
-		$data['result'] = $this->BarReview_model->get_all_barreviews();
+		$this->load->model('BarSpecial_model');
+		$this->BarSpecial_model->delete_barspecial($id);
+		$data['result'] = $this->BarSpecial_model->get_all_barspecials();
 		$this->load->view('header');
-		$this->load->view('BarReview/BarReview_view', $data);
+		$this->load->view('BarSpecial/BarSpecial_view', $data);
 		$this->load->view('footer');
 	}
 	
