@@ -16,10 +16,9 @@ class Event_model extends Model {
 	
     function create_event($name, $price, $type, $description, $date, $address)
 	{
-	   		$query = $this->db->query("INSERT INTO event (name,price, type, description, date, address) 
-                        VALUES
-			             ('".$name."','".$price."','".$type."','".$description."','".$date."'
-                         ,'".$address."')");
+	   		$query = $this->db->query("INSERT INTO event (name, price, type, description, date, address) 
+                        VALUES ('".$name."', '".$price."', '".$type."', '".$description."', '".$date."'
+                         , '".$address."')");
 	}
 	
 	function delete_event($id)

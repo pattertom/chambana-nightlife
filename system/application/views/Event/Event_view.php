@@ -2,7 +2,7 @@
 
 	$this->load->helper('url');
 	
-	echo '<table border="1"><tr><th><b>Event ID</b></th><th><b>Name</b></th>
+	echo '<table><tr><th><b>Event ID</b></th><th><b>Name</b></th>
                                                 <th><b>Price</b></th>
                                                 <th><b>Type</b></th>
                                                 <th><b>Description</b></th>

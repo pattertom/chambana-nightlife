@@ -2,7 +2,7 @@
 
 	$this->load->helper('url');
 	
-	echo '<table border="1"><tr><th><b>Bar Review ID</b></th><th><b>User Name</b></th>
+	echo '<table><tr><th><b>Bar Review ID</b></th><th><b>User Name</b></th>
                                                 <th><b>Bar Name</b></th>
                                                 <th><b>Approved?</b></th>
                                                 <th><b>Rating</b></th>

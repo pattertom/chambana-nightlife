@@ -7,7 +7,7 @@
 	echo form_submit('event_review_search', 'Search');
 	echo form_close();
  
-	echo '<table border="1"><tr><th><b>Bar Review ID</b></th><th><b>User Name</b></th>
+	echo '<table><tr><th><b>Bar Review ID</b></th><th><b>User Name</b></th>
                                                 <th><b>Event Name</b></th>
                                                 <th><b>Approved?</b></th>
                                                 <th><b>Rating</b></th>

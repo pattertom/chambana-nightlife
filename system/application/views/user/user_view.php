@@ -11,7 +11,7 @@ echo form_close();
 
 echo $this->session->flashdata('message');
 
-echo '<table border="1"><tr><th><b>Username</b></th><th><b>Email</b></th></tr>';
+echo '<table><tr><th><b>Username</b></th><th><b>Email</b></th></tr>';
 foreach ($result->result() as $row)
 {
 	echo '<tr><td>';

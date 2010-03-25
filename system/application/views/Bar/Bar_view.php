@@ -2,7 +2,7 @@
 	<?php
 	$this->load->helper('url');
 	
-	echo '<table border="1"><tr><th><b>Bar Name</b></th><th><b>Rating</b></th>
+	echo '<table><tr><th><b>Bar Name</b></th><th><b>Rating</b></th>
                                                 <th><b>Description</b></th>
                                                 <th><b>Specials</b></th>
                                                 <th><b>Address</b></th></tr>';

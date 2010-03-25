@@ -79,11 +79,11 @@ a.black:active {color:#000000}  /* selected link */
 .content {
 	position: relative;
 	height: auto;
-	width: 1021px;
+	width: 1006px;
 	min-height: 400px;
 	background-image:url(../images/body.png);
 	background-repeat:repeat-y;
-	padding: 7px 0px 0px 15px;
+	padding: 7px 15px 0px 15px;
 	font-family: verdana;
 	font-size: 10pt;
 	margin: auto;
@@ -91,18 +91,60 @@ a.black:active {color:#000000}  /* selected link */
 	border-bottom: 1px solid #000000;
 }
 
-.specialContent {
+.contentLeftColumn {
 	position: relative;
 	height: auto;
-	width: 1021px;
-	background-image:url(../images/specialMiddle.png);
-	background-repeat:repeat-y;
-	border-bottom: 1px solid #000000;
-	padding: 7px 0px 0px 15px;
+	float:left;
+	width: 670px;
+	min-height: 400px;
+	padding: 7px 15px 0px 15px;
 	font-family: verdana;
 	font-size: 10pt;
-	margin: auto;
 	color: white;
+}
+
+.contentRightColumn {
+	position: relative;
+	float: left;
+	height: auto;
+	width: 306px;
+	min-height: 400px;
+	padding: 7px 0px 0px 0px;
+	font-family: verdana;
+	font-size: 10pt;
+	color: white;
+}
+
+.itemContainer {
+	position: relative;
+	width: 306;
+	font-family: verdana;
+	font-size: 11pt;
+}
+
+.itemHeaderLeft {
+	position: relative;
+	float: left;
+	width: 13px;
+	height: 28px;
+	background: url(../images/itemHeaderLeft.png)
+}
+
+.itemHeaderMiddle {
+	position: relative;
+	float: left;
+	width: 280px;
+	height: 23px;
+	padding-top: 5px;
+	background: url(../images/itemHeaderMiddle.png) repeat-x;;
+}
+
+.itemHeaderRight {
+	position: relative;
+	float: left;
+	width: 13px;
+	height: 28px;
+	background: url(../images/itemHeaderRight.png);
 }
 
 .success {
@@ -145,3 +187,5 @@ th {
 table {
 	border: solid #333333;
 }
+
+.clear { clear: both; }
