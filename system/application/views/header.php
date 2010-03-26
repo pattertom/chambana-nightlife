@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/text.css" />
 	<script type="text/javascript" src="/scripts/common.js"></script>
 </head>
-<body bgcolor="#333333">
+<body>
 	<div class="site_top">
 		<div id="buttons">
 			<a href="<?php echo site_url()?>">Home</a>

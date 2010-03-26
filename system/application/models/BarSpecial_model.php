@@ -20,6 +20,12 @@ class BarSpecial_model extends Model {
 		return $query;
 	}
 	
+	function get_bar_specials($name)
+	{
+		$query = $this->db->query("SELECT * FROM barspecial WHERE barName = '".$name."'");
+		return $query;
+	}
+	
     function create_barspecial($barName, $isWeekly, $weeklyDay, $description, $dateSpecial)
 	{
 		if($dateSpecial != ""){

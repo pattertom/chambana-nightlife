@@ -13,6 +13,12 @@ class Bar_model extends Model {
         return $query;
     }
 	
+	function get_bar($name)
+    {
+		$query = $this->db->query("SELECT * FROM bar WHERE name = '".$name."'");
+		return $query;
+    }
+	
 	function create_bar($name,$rating, $description, $specials, $address)
 	{
 		$query = $this->db->query("INSERT INTO bar (name, rating, description, specials, address) VALUES

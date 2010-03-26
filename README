@@ -3,3 +3,6 @@ You will have to change the database config in the system/application/config/dat
 
 Added the header and footer files.  See the drink example for how to use it.
 Also fixed the search for drinks.  To use it go to http://localhost/index.php/drink/search/query
+
+Added more stuff to the bar page.  Goal is to create pages like this for each table.
+To view a single bar go to the bar page and click on the bar name.

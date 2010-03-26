@@ -9,7 +9,7 @@
 	foreach ($result->result() as $row)
 	{
 		echo '<tr><td>';
-		echo $row->name . ' <a href="' . site_url('bar/delete/'.$row->name) . '" class="black">[DELETE]</a>';
+		echo '<a href="'. site_url('bar/viewBar/'.$row->name).'">'.$row->name.'</a> <a href="' . site_url('bar/delete/'.$row->name) . '" class="black">[DELETE]</a>';
 		echo '</td><td>';
 		echo $row->rating;
         echo '</td><td>';

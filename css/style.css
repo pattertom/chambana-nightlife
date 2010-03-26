@@ -1,3 +1,7 @@
+body{
+	background: url(../images/background.png) #333333;
+}
+
 .site_top {
 	background: url(../images/header.png);
 	position: relative;

@@ -33,8 +33,7 @@ echo('<br />Creating Bar table...<br />');
 $response = mysql_query("CREATE TABLE IF NOT EXISTS Bar (
   name varchar(50) NOT NULL,
   rating int(11) NOT NULL default 8,
-  description varchar(400),
-  specials varchar(400),
+  description varchar(1000),
   address varchar(400),
   PRIMARY KEY (name)
 )");
