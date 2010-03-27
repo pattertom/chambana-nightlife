@@ -6,3 +6,6 @@ Also fixed the search for drinks.  To use it go to http://localhost/index.php/dr
 
 Added more stuff to the bar page.  Goal is to create pages like this for each table.
 To view a single bar go to the bar page and click on the bar name.
+
+Added a way for admins to approve barreviews and only admins can delete barreviews
+Added doctype so everything should display the same in all browsers

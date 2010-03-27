@@ -35,6 +35,11 @@ class BarReview_model extends Model {
 	   		$query = $this->db->query("DELETE FROM barreview WHERE id='".$id."'");
 	}
 	
+	function approve_barreview($id)
+	{
+	   		$query = $this->db->query("UPDATE barreview SET approvedByAdmin = 1 WHERE id='".$id."'");
+	}
+	
 	function search_barreview($name)
 	{
 		$query = $this->db->query("SELECT * FROM barreview WHERE name LIKE '%".$name."%'");

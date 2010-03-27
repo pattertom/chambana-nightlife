@@ -190,6 +190,7 @@ th {
 
 table {
 	border: solid #333333;
+	color: #000000;
 }
 
 .clear { clear: both; }

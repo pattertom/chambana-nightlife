@@ -55,7 +55,17 @@ class BarReview extends Controller {
 	function delete($id)
 	{
 		$this->load->model('BarReview_model');
-		$this->BarReview_model->delete_barreview($id);
+		if($this->session->userdata('admin')) $this->BarReview_model->delete_barreview($id);
+		$data['result'] = $this->BarReview_model->get_all_barreviews();
+		$this->load->view('header');
+		$this->load->view('BarReview/BarReview_view', $data);
+		$this->load->view('footer');
+	}
+	
+	function approve($id)
+	{
+		$this->load->model('BarReview_model');
+		$this->BarReview_model->approve_barreview($id);
 		$data['result'] = $this->BarReview_model->get_all_barreviews();
 		$this->load->view('header');
 		$this->load->view('BarReview/BarReview_view', $data);
