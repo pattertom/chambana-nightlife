@@ -27,7 +27,29 @@
 	line-height: 24px;
 }
 
+.time {
+	font-size: 9px;
+	float: right;
+}
+
+.commentHeader {
+	border-bottom:1px solid #AAAAAA;
+	color:#AAAAAA;
+	font:bold 1.4em "Lucida Grande",Helvetica,"Arial Unicode MS","Arial Unicode",Arial,sans-serif;
+	letter-spacing:1px;
+	padding:20px 0 3px;
+	margin-bottom: 5px;
+}
+
 h1.underlined {
+	border-bottom:1px solid #AAAAAA;
+	color:#AAAAAA;
+	font:bold 1.4em "Lucida Grande",Helvetica,"Arial Unicode MS","Arial Unicode",Arial,sans-serif;
+	letter-spacing:1px;
+	padding:20px 0 3px;
+}
+
+h3.underlined {
 	border-bottom:1px solid #AAAAAA;
 	color:#AAAAAA;
 	font:bold 1.4em "Lucida Grande",Helvetica,"Arial Unicode MS","Arial Unicode",Arial,sans-serif;

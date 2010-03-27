@@ -1,0 +1,27 @@
+input.textInput {
+	width: 200px;
+	border: 1px solid #000000;
+	margin-top: 2px;
+	color:#444444;
+	font: 11px arial;
+	padding-left: 2px;
+}
+
+textarea.areaStyled {
+	color:#444444;
+	font: 11px arial;
+	border: 1px solid #000000;
+}
+
+input.submitButton {
+	background-color:#333333;
+	border:1px solid #FFFFFF;
+	color:#FFFFFF;
+	font: bold 84% 'trebuchet ms',helvetica,sans-serif;
+}
+
+select.selectStyled {
+	color:#444444;
+	font: 11px arial;
+	border: 1px solid #000000;
+}

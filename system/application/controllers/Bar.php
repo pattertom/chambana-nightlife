@@ -30,8 +30,10 @@ class Bar extends Controller {
 	{
 		$this->load->model('Bar_model');
 		$this->load->model('BarSpecial_model');
+		$this->load->model('BarReview_model');
 		$data['result'] = $this->Bar_model->get_bar($name);
 		$data['specials'] = $this->BarSpecial_model->get_bar_specials($name);
+		$data['reviews'] = $this->BarReview_model->get_reviews_for_bar($name);
 		$this->load->view('header');
 		$this->load->view('Bar/Bar_single_view', $data);
 		$this->load->view('footer');

@@ -34,11 +34,17 @@ class BarReview extends Controller {
 		$approvedByAdmin = $this->input->post('approvedByAdmin');
         $rating = $this->input->post('rating');
         $reviewContent = $this->input->post('reviewContent');
+		$reviewContent = nl2br($reviewContent);
+		$reviewContent = quotes_to_entities($reviewContent);
         $ts = $this->input->post('ts');
         
 		if($userName && $barName && $approvedByAdmin && $rating && $reviewContent && $ts) {
             $this->BarReview_model->create_barreview($userName, $barName, $approvedByAdmin,
                                             $rating, $reviewContent, $ts);
+		}
+		else if($userName && $barName && $rating && $reviewContent)
+		{
+			$this->BarReview_model->create_barreview_simple($userName, $barName, $rating, $reviewContent);
 		}
 		$data['result'] = $this->BarReview_model->get_all_barreviews();
 		$this->load->view('header');

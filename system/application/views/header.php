@@ -6,6 +6,7 @@
 	<title>Welcome to CU Nightlife</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="/css/text.css" />
+	<link rel="stylesheet" type="text/css" href="/css/forms.css" />
 	<script type="text/javascript" src="/scripts/common.js"></script>
 </head>
 <body>

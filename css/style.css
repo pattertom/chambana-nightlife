@@ -87,7 +87,7 @@ a.black:active {color:#000000}  /* selected link */
 	min-height: 400px;
 	background-image:url(../images/body.png);
 	background-repeat:repeat-y;
-	padding: 7px 15px 0px 15px;
+	padding: 7px 15px 10px 15px;
 	font-family: verdana;
 	font-size: 10pt;
 	margin: auto;
