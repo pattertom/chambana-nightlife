@@ -179,6 +179,13 @@ a.black:active {color:#000000}  /* selected link */
 	width:165px;
 }
 
+.map{
+    color:black;
+    font-family:verdana;
+    font-size:8pt;
+    font-weight:none;
+}
+
 td {
 	background-color: #D6D7D6;
 }
