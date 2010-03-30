@@ -45,6 +45,7 @@ echo('<br />Creating Event table...<br />');
 $response = mysql_query("CREATE TABLE IF NOT EXISTS Event (
   id int(11) NOT NULL auto_increment,
   name varchar(50) NOT NULL,
+  image_id int(11) NOT NULL default 0,
   price int(11) NOT NULL default 0,
   type varchar(20) NOT NULL,
   description varchar(400),

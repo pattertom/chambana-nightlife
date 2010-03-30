@@ -6,6 +6,7 @@ echo form_open_multipart('event/create');
 
 
 echo 'Event Name: ' . form_input('name', '').'<br />';
+echo 'Event Picture: ' . form_upload('image', '').'<br />';
 echo 'Event Price: ' . form_input('price', '').'<br />';
 echo 'Event Type: ' . form_input('type', '').'<br />';
 echo form_textarea('description', 'Description goes here').'<br />';
