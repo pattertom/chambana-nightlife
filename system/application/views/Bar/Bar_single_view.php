@@ -119,7 +119,7 @@ echo '<div class="paragraph">Leave a review <br />';
 echo form_open_multipart('barReview/create');
 echo '<input type="hidden" name="barName" value="'.$bar->name.'">';
 echo '<input type="text" tabindex="1" size="30" value="" name="userName" class="textInput"> <b>Name</b> (required) ';
-echo '<select name="rating" class="selectStyled">
+echo '<select name="rating" tabindex="2" class="selectStyled">
 		<option value="0">0</option>
 		<option value="1">1</option>
 		<option value="2">2</option>
@@ -132,7 +132,7 @@ echo '<select name="rating" class="selectStyled">
 		<option value="9">9</option>
 		<option value="10">10</option>
 		</select> <b>Rating</b><br />';
-echo '<input type="text" tabindex="1" size="30" value="" name="mail" class="textInput"> <b>Mail</b> (will not be published) (required)<br />';
+echo '<input type="text" tabindex="3" size="30" value="" name="mail" class="textInput"> <b>Mail</b> (will not be published) (required)<br />';
 echo '<textarea tabindex="4" cols="80" rows="6" name="reviewContent" class="areaStyled">Write your review here!</textarea><br />';
 echo '<input type="submit" class="submitButton" value="Post your review" name="submitReview">';
 echo form_close();

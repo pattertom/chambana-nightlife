@@ -7,8 +7,10 @@
 	echo form_submit('event_review_search', 'Search');
 	echo form_close();
  
-	echo '<table><tr><th><b>Bar Review ID</b></th><th><b>User Name</b></th>
-                                                <th><b>Event Name</b></th>
+	echo '<table><tr>
+	                                            <th><b>Event Review ID</b></th>
+	                                            <th><b>User Name</b></th>
+                                                <th><b>EventID</b></th>
                                                 <th><b>Approved?</b></th>
                                                 <th><b>Rating</b></th>
                                                 <th><b>Review Content</b></th>
@@ -20,9 +22,12 @@
 		echo '</td><td>';
 		echo $row->userName;
         echo '</td><td>';
-		echo $row->eventName;
+        echo '<a href="' . site_url('event/view_event/' . $row->eventID) . '"> ' . $row->eventID . '</a>';
         echo '</td><td>';
-        echo $row->approvedByAdmin;
+        if ($this->session->userdata('admin') && $row->approvedByAdmin == 0)
+            echo '<a href="' . site_url('eventreview/approve/'.$row->id) . '">Approve</a>';
+        else
+            echo $row->approvedByAdmin;
         echo '</td><td>';
 		echo $row->rating;
         echo '</td><td>';

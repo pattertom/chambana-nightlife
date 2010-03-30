@@ -1,5 +1,4 @@
 <?php
-
 class Event_model extends Model {
     
 	function Event_model()
@@ -12,6 +11,12 @@ class Event_model extends Model {
     {
         $query = $this->db->get('event');
         return $query;
+    }
+	
+	function get_event($id)
+    {
+		$query = $this->db->query("SELECT * FROM event WHERE id = ".$id);
+		return $query;
     }
 	
     function create_event($name, $price, $type, $description, $date, $address)

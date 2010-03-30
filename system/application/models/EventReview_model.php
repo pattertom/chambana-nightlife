@@ -6,33 +6,45 @@ class EventReview_model extends Model {
         parent::Model();
 		$this->load->database();
     }
-	
-	function create_event_review($name, $review, $rating)
-	{
-		$username = $this->session->userdata('username');
-		
-		$query = $this->db->query("SELECT id FROM event WHERE name='".$name."'");
-		$eventid = $query->result('id');
-		
-		$query = $this->db->query("INSERT INTO eventreview 
-		(userName, eventID, approvedByAdmin, rating, reviewContent, ts) 
-		VALUES ('".$username."', '".$eventid."', 0, '".$rating."', '".$review."', NOW())");
-	}
-	
+
 	function get_all_event_reviews()
     {
-        $query = $this->db->query("SELECT * FROM eventreview WHERE approvedByAdmin=1");
+        if ($this->session->userdata('admin') == 1)
+            $query = $this->db->query("SELECT * FROM eventreview");
+        else
+            $query = $this->db->query("SELECT * FROM eventreview WHERE approvedByAdmin=1");
+            
         return $query;
     }
 	
-	function delete_event_reviews($name)
+	function create_event_review($username, $event_id, $rating, $reviewContent)
 	{
-		$query = $this->db->query("DELETE review FROM eventreview WHERE name='".$name."'");
+		$username = $username;
+		
+		$query = $this->db->query("INSERT INTO eventreview 
+		(userName, eventID, approvedByAdmin, rating, reviewContent, ts) 
+		VALUES ('".$username."', '".$event_id."', 0, '".$rating."', '".$reviewContent."', NOW())");
 	}
 	
-	function search_event_reviews($name)
+	function delete_event_reviews($id)
 	{
-		$query = $this->db->query("SELECT * FROM eventreview WHERE reviewContent LIKE '%".$name."%'");
+		$query = $this->db->query("DELETE FROM EventReview WHERE id=".$id);
+	}
+	
+	function approve_event_review($id)
+	{
+	   		$query = $this->db->query("UPDATE eventreview SET approvedByAdmin = 1 WHERE id='".$id."'");
+	}
+	
+	function search_event_reviews($id)
+	{
+		$query = $this->db->query("SELECT * FROM eventreview WHERE id=".$id);
+		return $query;
+	}
+	
+	function get_reviews_for_event($id)
+	{
+		$query = $this->db->query("SELECT * FROM eventreview WHERE eventID = ".$id." AND approvedByAdmin = 1 ORDER BY ts DESC LIMIT 0,10");
 		return $query;
 	}
 }
