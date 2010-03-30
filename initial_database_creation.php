@@ -3,20 +3,6 @@ include "db.php";
 
 dbConnect();
 
-// create User table
-echo('<br />Creating Users table...<br />');
-$response = mysql_query("CREATE TABLE IF NOT EXISTS Users (
-    id smallint(5) NOT NULL auto_increment,
-    username varchar(30) NOT NULL default '',
-    password varchar(32) NOT NULL default '',
-    PRIMARY KEY (id),
-    UNIQUE KEY username (username)
-)");
-
-if (!$response)
-    echo('User table failed: '.mysql_error());
-    
-    
 // create Drink table
 echo('<br />Creating Drink table...<br />');
 $response = mysql_query("CREATE TABLE IF NOT EXISTS Drink (
@@ -156,5 +142,20 @@ $response = mysql_query("CREATE TABLE IF NOT EXISTS EventReview (
 
 if (!$response)
     echo('EventReview table failed: ' . mysql_error());
+    
+// create Image table
+echo('<br />Creating Image table...<br />');
+$response = mysql_query("CREATE TABLE IF NOT EXISTS Image (
+    image_id int(11) not null default '0',
+    image_type varchar(25) not null default '',
+    image blob not null,
+    image_size varchar(25) not null default '',
+    image_ctgy varchar(25) not null default '',
+    image_name varchar(50) not null default '',
+    PRIMARY KEY (image_id)
+);");
+
+if (!$response)
+    echo('Image table failed: ' . mysql_error());
 
 ?>

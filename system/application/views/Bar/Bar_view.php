@@ -3,9 +3,9 @@
 	$this->load->helper('url');
 	
 	echo '<table><tr><th><b>Bar Name</b></th><th><b>Rating</b></th>
-                                                <th><b>Description</b></th>
-                                                <th><b>Specials</b></th>
-                                                <th><b>Address</b></th></tr>';
+                                             <th><b>Description</b></th>
+                                             <th><b>Specials</b></th>
+                                             <th><b>Address</b></th></tr>';
 	foreach ($result->result() as $row)
 	{
 		echo '<tr><td>';
