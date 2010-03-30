@@ -18,6 +18,7 @@ if (!$response)
 echo('<br />Creating Bar table...<br />');
 $response = mysql_query("CREATE TABLE IF NOT EXISTS Bar (
   name varchar(50) NOT NULL,
+  image_id int(11) NOT NULL default 0,
   rating int(11) NOT NULL default 8,
   description varchar(1000),
   address varchar(400),
@@ -146,9 +147,11 @@ if (!$response)
 // create Image table
 echo('<br />Creating Image table...<br />');
 $response = mysql_query("CREATE TABLE IF NOT EXISTS Image (
-    image_id int(11) not null default '0',
+    image_id int(11) not null auto_increment,
     image_type varchar(25) not null default '',
     image blob not null,
+    image_height varchar(25) not null default '',
+    image_width varchar(25) not null default '',
     image_size varchar(25) not null default '',
     image_ctgy varchar(25) not null default '',
     image_name varchar(50) not null default '',

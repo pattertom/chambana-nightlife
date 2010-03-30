@@ -2,6 +2,7 @@
 $this->load->helper('form');
 echo form_open_multipart('bar/create');
 echo 'Bar Name: ' . form_input('name', '').'<br />';
+echo 'Bar Picture: ' . form_upload('image', '').'<br />';
 $options = array(
            '0' => '0',
            '1' => '1',
