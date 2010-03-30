@@ -1,5 +1,4 @@
 <?php
-
 class BarReview_model extends Model {
     
 	function BarReview_model()
@@ -50,6 +49,6 @@ class BarReview_model extends Model {
 	{
 		$query = $this->db->query("SELECT * FROM barreview WHERE barName = '".$name."' AND approvedByAdmin = 1 ORDER BY ts DESC LIMIT 0,10");
 		return $query;
-	}	
+	}
 }
 ?>

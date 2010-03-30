@@ -64,5 +64,16 @@ class Event extends Controller {
 		$this->load->view('Event/Event_view', $data);
 		$this->load->view('footer');
 	}
+	
+	function view_event($id)
+	{
+		$this->load->model('Event_model');
+		$this->load->model('EventReview_model');
+		$data['result'] = $this->Event_model->get_event($id);
+		$data['reviews'] = $this->EventReview_model->get_reviews_for_event($id);
+		$this->load->view('header');
+		$this->load->view('Event/Event_single_view', $data);
+		$this->load->view('footer');
+	}	
 }
 ?>

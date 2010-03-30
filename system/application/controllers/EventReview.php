@@ -30,15 +30,14 @@ class EventReview extends Controller {
 	{
 		$this->load->model('EventReview_model');
 		$userName = $this->input->post('userName');
-        $eventName = $this->input->post('eventName');
-		$approvedByAdmin = $this->input->post('approvedByAdmin');
+        $event_id = $this->input->post('event_id');
         $rating = $this->input->post('rating');
         $reviewContent = $this->input->post('reviewContent');
-        $ts = $this->input->post('ts');
+        $reviewContent = nl2br($reviewContent);
+		$reviewContent = quotes_to_entities($reviewContent);
 		
-		if($userName && $eventName && $approvedByAdmin && $rating && $reviewContent && $ts) {
-            $this->EventReview_model->create_event_review($userName, $barName, $approvedByAdmin,
-                                            $rating, $reviewContent, $ts);
+		if($userName && $event_id && $rating && $reviewContent) {
+            $this->EventReview_model->create_event_review($userName, $event_id, $rating, $reviewContent);
 		}
 		
 		$data['result'] = $this->EventReview_model->get_all_event_reviews();
@@ -47,13 +46,23 @@ class EventReview extends Controller {
 		$this->load->view('footer');
 	}
 	
-	function delete($name)
+	function delete($id)
 	{
 		$this->load->model('EventReview_model');
-		$this->Drink_model->delete_event_reviews($name);
-		$data['result'] = $this->EventReview_model->get_all_event_reviews($name);
+		$this->EventReview_model->delete_event_reviews($id);
+		$data['result'] = $this->EventReview_model->get_all_event_reviews($id);
 		$this->load->view('header');
-		$this->load->view('EventReview/Event_review_view', $data);
+		$this->load->view('EventReview/EventReview_view', $data);
+		$this->load->view('footer');
+	}
+	
+	function approve($id)
+	{
+		$this->load->model('EventReview_model');
+		$this->EventReview_model->approve_event_review($id);
+		$data['result'] = $this->EventReview_model->get_all_event_reviews();
+		$this->load->view('header');
+		$this->load->view('EventReview/EventReview_view', $data);
 		$this->load->view('footer');
 	}
 	

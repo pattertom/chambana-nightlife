@@ -13,7 +13,7 @@
 		echo '<tr><td>';
 		echo $row->id . ' <a href="' . site_url('event/delete/'.$row->id) . '" class="black">[DELETE]</a>';
 		echo '</td><td>';
-		echo $row->name;
+		echo '<a href="'. site_url('event/view_event/'.$row->id).'">'.$row->name.'</a>';
         echo '</td><td>';
 		echo $row->price;
         echo '</td><td>';

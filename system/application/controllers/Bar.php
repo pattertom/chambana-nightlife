@@ -4,7 +4,7 @@ class Bar extends Controller {
 	function show_all()
 	{
 		$this->load->model('Bar_model');
-		$data['result'] = $this->Bar_model->get_all_drinks();
+		$data['result'] = $this->Bar_model->get_all_bars();
 		$this->load->view('header');
 		$this->load->view('Bar/Bar_view', $data);
 		$this->load->view('footer');
