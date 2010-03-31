@@ -44,6 +44,12 @@ class BarReview_model extends Model {
 		$query = $this->db->query("SELECT * FROM barreview WHERE name LIKE '%".$name."%'");
 		return $query;
 	}   
+	
+	function get_non_approved_reviews()
+	{
+		$query = $this->db->query("SELECT * FROM barreview WHERE approvedByAdmin = 0");
+		return $query;
+	} 
 
 	function get_reviews_for_bar($name)
 	{

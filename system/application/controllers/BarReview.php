@@ -26,7 +26,7 @@ class BarReview extends Controller {
 		$this->load->view('footer');
 	}
 	
-	function create()
+	function create($name)
 	{
 		$this->load->model('BarReview_model');
         $userName = $this->input->post('userName');
@@ -47,9 +47,7 @@ class BarReview extends Controller {
 			$this->BarReview_model->create_barreview_simple($userName, $barName, $rating, $reviewContent);
 		}
 		$data['result'] = $this->BarReview_model->get_all_barreviews();
-		$this->load->view('header');
-		$this->load->view('BarReview/BarReview_view', $data);
-		$this->load->view('footer');
+		redirect('bar/viewBarReviewed/'.$name);
 	}
 	
 	function delete($id)
@@ -57,9 +55,7 @@ class BarReview extends Controller {
 		$this->load->model('BarReview_model');
 		if($this->session->userdata('admin')) $this->BarReview_model->delete_barreview($id);
 		$data['result'] = $this->BarReview_model->get_all_barreviews();
-		$this->load->view('header');
-		$this->load->view('BarReview/BarReview_view', $data);
-		$this->load->view('footer');
+		redirect('dashboard/adminApprovals');
 	}
 	
 	function approve($id)
@@ -67,9 +63,7 @@ class BarReview extends Controller {
 		$this->load->model('BarReview_model');
 		$this->BarReview_model->approve_barreview($id);
 		$data['result'] = $this->BarReview_model->get_all_barreviews();
-		$this->load->view('header');
-		$this->load->view('BarReview/BarReview_view', $data);
-		$this->load->view('footer');
+		redirect('dashboard/adminApprovals');
 	}
 	
 	function search($name)

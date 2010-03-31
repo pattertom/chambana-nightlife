@@ -26,7 +26,7 @@ class EventReview extends Controller {
 		$this->load->view('footer');
 	}
 	
-	function create()
+	function create($id)
 	{
 		$this->load->model('EventReview_model');
 		$userName = $this->input->post('userName');
@@ -41,9 +41,7 @@ class EventReview extends Controller {
 		}
 		
 		$data['result'] = $this->EventReview_model->get_all_event_reviews();
-		$this->load->view('header');
-		$this->load->view('EventReview/EventReview_view', $data);
-		$this->load->view('footer');
+		redirect('event/view_event_reviewed/'.$id);
 	}
 	
 	function delete($id)
@@ -51,9 +49,7 @@ class EventReview extends Controller {
 		$this->load->model('EventReview_model');
 		$this->EventReview_model->delete_event_reviews($id);
 		$data['result'] = $this->EventReview_model->get_all_event_reviews($id);
-		$this->load->view('header');
-		$this->load->view('EventReview/EventReview_view', $data);
-		$this->load->view('footer');
+		redirect('dashboard/adminApprovals');
 	}
 	
 	function approve($id)
@@ -61,9 +57,7 @@ class EventReview extends Controller {
 		$this->load->model('EventReview_model');
 		$this->EventReview_model->approve_event_review($id);
 		$data['result'] = $this->EventReview_model->get_all_event_reviews();
-		$this->load->view('header');
-		$this->load->view('EventReview/EventReview_view', $data);
-		$this->load->view('footer');
+		redirect('dashboard/adminApprovals');
 	}
 	
 	function search($name = "")

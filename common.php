@@ -1,4 +1,4 @@
-<?
+<?php
 function get_new_dimensions($height, $width, $pixel_height) {
     // if ($height > $width)
         $scale = $height > $pixel_height ? $pixel_height/$height : 1;

@@ -4,6 +4,14 @@ $this->load->helper('url');
 ?>
 <div class="contentLeftColumn">
 	<h3>Dashboard</h3>
+	<?php 
+	if($this->session->userdata('admin')){
+		echo '<div class="adminToolBox">';
+		echo '<div class="descriptionTitle">Admin Toolbox</div>';
+		echo '<a href="'. site_url('/dashboard/adminApprovals').'" class="white">See awaiting bar reviews</a><br />';
+		echo '<a href="'. site_url('/dashboard/adminApprovals').'" class="white">See awaiting event reviews</a><br /><br /></div><br />';
+	}
+	?>
 	<div class="title">
 		<?php 
 		echo 'Specials for '.date("l").'!</div>';

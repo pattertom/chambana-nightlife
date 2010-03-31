@@ -42,6 +42,12 @@ class EventReview_model extends Model {
 		return $query;
 	}
 	
+	function get_non_approved_reviews()
+	{
+		$query = $this->db->query("SELECT * FROM eventreview WHERE approvedByAdmin = 0");
+		return $query;
+	}
+	
 	function get_reviews_for_event($id)
 	{
 		$query = $this->db->query("SELECT * FROM eventreview WHERE eventID = ".$id." AND approvedByAdmin = 1 ORDER BY ts DESC LIMIT 0,10");

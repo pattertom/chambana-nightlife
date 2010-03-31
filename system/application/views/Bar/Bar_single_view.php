@@ -113,32 +113,35 @@ echo '</table>';
 
 /**
 * Reviews section
-* Display the review form first
+* Display the review form first if not already reviewed by user
 * and then display the reviews
 */
 echo '<h1 class="underlined">Reviews</h1>';
 echo '<div class="paragraph">Leave a review <br />';
-echo form_open_multipart('barReview/create');
-echo '<input type="hidden" name="barName" value="'.$bar->name.'">';
-echo '<input type="text" tabindex="1" size="30" value="" name="userName" class="textInput"> <b>Name</b> (required) ';
-echo '<select name="rating" tabindex="2" class="selectStyled">
-		<option value="0">0</option>
-		<option value="1">1</option>
-		<option value="2">2</option>
-		<option value="3">3</option>
-		<option value="4">4</option>
-		<option value="5">5</option>
-		<option value="6">6</option>
-		<option value="7">7</option>
-		<option selected="selected" value="8">8</option>
-		<option value="9">9</option>
-		<option value="10">10</option>
-		</select> <b>Rating</b><br />';
-echo '<input type="text" tabindex="3" size="30" value="" name="mail" class="textInput"> <b>Mail</b> (will not be published) (required)<br />';
-echo '<textarea tabindex="4" cols="80" rows="6" name="reviewContent" class="areaStyled">Write your review here!</textarea><br />';
-echo '<input type="submit" class="submitButton" value="Post your review" name="submitReview">';
-echo form_close();
-
+if(!$reviewed) 
+{
+	echo form_open_multipart('barReview/create/'.$bar->name);
+	echo '<input type="hidden" name="barName" value="'.$bar->name.'">';
+	echo '<input type="text" tabindex="1" size="30" value="" name="userName" class="textInput"> <b>Name</b> (required) ';
+	echo '<select name="rating" tabindex="2" class="selectStyled">
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option selected="selected" value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			</select> <b>Rating</b><br />';
+	echo '<input type="text" tabindex="3" size="30" value="" name="mail" class="textInput"> <b>Mail</b> (will not be published) (required)<br />';
+	echo '<textarea tabindex="4" cols="80" rows="6" name="reviewContent" class="areaStyled">Write your review here!</textarea><br />';
+	echo '<input type="submit" class="submitButton" value="Post your review" name="submitReview">';
+	echo form_close();
+}
+else echo '<b>Thank you for submitting your review.  It is now awaiting admin approval!</b>';
 foreach($reviews->result() as $row)
 {
 	echo '<div class="commentHeader"> Review by <font color="white">'.$row->userName.'</font> <div class="time">on ' . date("g:i a F j, Y", strtotime($row->ts)).'</div></div>';
@@ -226,7 +229,7 @@ foreach($reviews->result() as $row)
                 zoomControl : GSmapSearchControl.ZOOM_CONTROL_ENABLE_ALL,
                 title : "<?php echo $bar->name ?>",
                 <!-- Need to specify a url for the bar otherwise the title does not show up -->
-                url : "http://localhost/chambana-nightlife/index.php/bar/viewBar/<?php echo $bar->name ?>",
+                url : "<?php echo site_url('bar/viewBar/' .$bar->name) ?>",
                 idleMapZoom : GSmapSearchControl.ACTIVE_MAP_ZOOM,
                 activeMapZoom : GSmapSearchControl.ACTIVE_MAP_ZOOM
                 }

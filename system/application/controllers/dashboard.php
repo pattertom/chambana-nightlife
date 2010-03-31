@@ -20,5 +20,21 @@ class Dashboard extends Controller {
 		$data['title']  = 'Dashboard | CU Nightlife';   
 	    $this->load->view('Dashboard/dashboard_view', $data);
 	}
+	
+	function adminApprovals()
+	{
+		if ($this->session->userdata('admin') == FALSE)
+	    {
+	        redirect('/index.php');
+	    }
+	
+		$this->load->model('BarReview_model');
+		$data['barreviews'] = $this->BarReview_model->get_non_approved_reviews();
+		$this->load->model('EventReview_model');
+		$data['eventreviews'] = $this->EventReview_model->get_non_approved_reviews();
+		$this->load->view('header');
+		$this->load->view('Dashboard/admin_approvals', $data);
+		$this->load->view('footer');
+	}
 }
 ?>

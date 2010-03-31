@@ -2,6 +2,33 @@ body{
 	background: url(../images/background.png) #333333;
 }
 
+.adminToolBox{
+	background: #333333;
+	border: 1px solid #000000;
+	color:#FFFFFF;
+	padding-top:5px;
+	padding-left:10px;
+	padding-right:5px;
+	padding-bottom:5px;
+	width:90%;
+	min-height:35px;
+	z-index:7;
+	font-family: arial;
+	font-size: 11pt;
+	margin-top: 8px;
+}
+
+.descriptionTitle {
+	font-size: 13pt;
+	text-align: center;
+	font-weight: bold;
+	padding-bottom: 5px;
+	background: #2a438a;
+	color: #FFFFFF;
+	border: 1px dotted #FFFFFF;
+	margin-bottom: 5px;
+}
+
 .site_top {
 	background: url(../images/header.png);
 	position: relative;
@@ -88,6 +115,11 @@ a.black:link {color:#000000}      /* unvisited link */
 a.black:visited {color:#000000}  /* visited link */
 a.black:hover {color:#000000}  /* mouse over link */
 a.black:active {color:#000000}  /* selected link */
+
+a.white:link {color:#ffffff}      /* unvisited link */
+a.white:visited {color:#ffffff}  /* visited link */
+a.white:hover {color:#aaaaaa}  /* mouse over link */
+a.white:active {color:#ffffff}  /* selected link */
 
 .content {
 	position: relative;
