@@ -161,7 +161,7 @@ foreach($reviews->result() as $row)
     $image_id = $row->image_id;
     list($height, $width, $scale) = get_new_dimensions($row->image_height, $row->image_width, 200, "height");
     ?>
-	<center><img src="/image.php?id=<?php echo $image_id . '" height="'.$height.'" width="'.$width.'"'; ?>" /></center>
+	<center><img src="/index.php/image/display/<?php echo $image_id . '" height="'.$height.'" width="'.$width.'"'; ?>" /></center>
 	<h1 class="underlined">Address</h2>
     <div class="paragraph"><?php echo $bar->address?></div>
     
