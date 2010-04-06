@@ -13,6 +13,22 @@ class Bar_model extends Model {
         return $query;
     }
 	
+	function get_all_bars_with_ratings()
+	{
+		$query = $this->db->query("
+			SELECT bar.name, bar.address, C.average, bar.image_id
+			FROM bar LEFT JOIN 
+				(SELECT barreview.barName, AVG(barreview.rating) as average
+				FROM barreview
+				WHERE approvedByAdmin = 1
+				GROUP BY barreview.barName) C
+			ON bar.name = C.barName
+			GROUP BY bar.name
+			ORDER BY C.average DESC
+		");
+		return $query;
+	}
+	
 	function get_bar($name)
     {
 		$query = $this->db->query("SELECT * FROM bar WHERE name = '".$name."'");

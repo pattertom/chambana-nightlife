@@ -73,13 +73,8 @@ foreach($reviews->result() as $row)
 </div>
 </div>
 <div class="contentRightColumn">
-    <?php
-    $query = $this->db->query("SELECT * FROM image WHERE image_id=".$event->image_id);
-    $row = $query->row();
-    $image_id = $row->image_id;
-    list($height, $width, $scale) = get_new_dimensions($row->image_height, $row->image_width, 200, "height");
-    ?>
-	<center><img src="/index.php/image/display/<?php echo $image_id . '" height="'.$height.'" width="'.$width.'"'; ?>" /></center>
+
+	<center><?php echo $image ?></center>
 	<h1 class="underlined">Address</h2>
 	<div class="paragraph"><?php echo $event->address?></div>
 </div>

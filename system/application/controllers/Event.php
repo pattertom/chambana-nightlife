@@ -69,7 +69,10 @@ class Event extends Controller {
 	{
 		$this->load->model('Event_model');
 		$this->load->model('EventReview_model');
+		$this->load->model('image_model');
 		$data['result'] = $this->Event_model->get_event($id);
+		$event = $data['result']->row();
+		$data['image'] = $this->image_model->get_scale_image_string($event->image_id,300,500);
 		$data['reviews'] = $this->EventReview_model->get_reviews_for_event($id);
 		$data['reviewed'] = FALSE;
 		$this->load->view('header');
@@ -81,7 +84,10 @@ class Event extends Controller {
 	{
 		$this->load->model('Event_model');
 		$this->load->model('EventReview_model');
+		$this->load->model('image_model');
 		$data['result'] = $this->Event_model->get_event($id);
+		$event = $data['result']->row();
+		$data['image'] = $this->image_model->get_scale_image_string($event->image_id,300,500);
 		$data['reviews'] = $this->EventReview_model->get_reviews_for_event($id);
 		$data['reviewed'] = TRUE;
 		$this->load->view('header');

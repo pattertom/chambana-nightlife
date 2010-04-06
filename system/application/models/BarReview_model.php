@@ -56,5 +56,28 @@ class BarReview_model extends Model {
 		$query = $this->db->query("SELECT * FROM barreview WHERE barName = '".$name."' AND approvedByAdmin = 1 ORDER BY ts DESC LIMIT 0,10");
 		return $query;
 	}
+	
+	function get_average_for_bar($name)
+	{
+		$query = $this->db->query("SELECT AVG(rating) AS average FROM barreview WHERE barName = '".$name."' AND approvedByAdmin = 1");
+		return $query;
+	}
+	
+	function get_average_for_all_bars()
+	{
+		$query = $this->db->query("
+			SELECT barName, AVG(rating) AS average, FROM barreview WHERE approvedByAdmin = 1");
+		return $query;
+	}
+	
+	function get_average_bar_pairs()
+	{
+		$query = $this->db->query("
+			SELECT barName, AVG(rating)
+			FROM barreview
+			WHERE approvedByAdmin = 1
+			GROUP BY barName");
+		return $query;
+	}
 }
 ?>

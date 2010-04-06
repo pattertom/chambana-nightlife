@@ -241,4 +241,22 @@ table {
 	color: #000000;
 }
 
+table.display {
+	border-width: medium medium medium medium;
+	border-spacing: 10px;
+	border-style: solid solid solid solid;
+	border-color: rgb(32, 70, 113);
+	border-collapse: separate;
+	background-color: rgb(120, 120, 120);
+}
+
+table.display td {
+	border-width: thin thin thin thin;
+	padding: 10px 10px 10px 10px;
+	border-style: dotted dotted dotted dotted;
+	border-color: rgb(245, 128, 41);
+	background-color: rgb(150, 150, 155);
+	-moz-border-radius: 3px 3px 3px 3px;
+}
+
 .clear { clear: both; }

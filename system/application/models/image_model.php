@@ -13,5 +13,16 @@ class Image_model extends Model {
 		return $query;
     }
 
+	function get_scale_image_string($id,$mw,$mh) { // path max_width max_height
+		$query = $this->db->query("SELECT image_width, image_height FROM image WHERE image_id=".$id);
+		$sizes = $query->row();
+		$w = $sizes->image_width;
+		$h = $sizes->image_height;
+		
+		foreach(array('w','h') as $v) { $m = "m{$v}";
+			if(${$v} > ${$m} && ${$m}) { $o = ($v == 'w') ? 'h' : 'w';
+			$r = ${$m} / ${$v}; ${$v} = ${$m}; ${$o} = ceil(${$o} * $r); } }
+		return '<img src="/index.php/image/display/'. $id . '" height="'.$h.'" width="'.$w.'" />';
+	}
 }
 ?>

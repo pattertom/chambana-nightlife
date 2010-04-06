@@ -19,6 +19,7 @@ $reviews is the query containing the reviews for the bar
 $this->load->helper('url');
 $this->load->helper('form');
 $bar = $result->row();
+$averageRating = $rating->row();
 
 // Set up the left column and display the header
 echo '<div class="contentLeftColumn">';
@@ -155,13 +156,9 @@ foreach($reviews->result() as $row)
 </div>
 </div>
 <div class="contentRightColumn">
-    <?php
-    $query = $this->db->query("SELECT * FROM image WHERE image_id=".$bar->image_id);
-    $row = $query->row();
-    $image_id = $row->image_id;
-    list($height, $width, $scale) = get_new_dimensions($row->image_height, $row->image_width, 200, "height");
-    ?>
-	<center><img src="/index.php/image/display/<?php echo $image_id . '" height="'.$height.'" width="'.$width.'"'; ?>" /></center>
+	<center><?php echo $image; ?></center>
+	<h1 class="underlined">User Rating</h2>
+    <div class="paragraph"><?php echo $bar->name; ?> has an average user rating of <b><?php echo $averageRating->average; ?></b></div>
 	<h1 class="underlined">Address</h2>
     <div class="paragraph"><?php echo $bar->address?></div>
     
