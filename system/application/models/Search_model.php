@@ -15,7 +15,7 @@ class Search_model extends Model {
 	
 	function search_all($name)
 	{
-		$query = $this->db->query("SELECT * FROM event WHERE description LIKE '%".$name."%' or name LIKE '%".$name."%'");
+		$query = $this->db->query("SELECT event.id, event.name, event.description, barspecial.id, barspecial.barName, barspecial.description description2 FROM event, barspecial WHERE event.name LIKE '%".$name."%' or barspecial.description LIKE '%".$name."%'");
 		return $query;
 	}
 }
