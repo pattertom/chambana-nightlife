@@ -13,9 +13,16 @@ class Event extends Controller {
 	function index()
 	{
 		$this->load->model('Event_model');
-		$data['result'] = $this->Event_model->get_all_events();
+		$this->load->model('image_model');
+		$data['result'] = $this->Event_model->get_all_events_with_ratings();
+		$images = array();
+		foreach ($data['result']->result() as $row)
+		{
+			$images[] = $this->image_model->get_scale_image_string($row->image_id,200,500);
+		}
+		$data['images'] = $images;
 		$this->load->view('header');
-		$this->load->view('Event/Event_view', $data);
+		$this->load->view('Event/Event_view_all', $data);
 		$this->load->view('footer');
 	}
 

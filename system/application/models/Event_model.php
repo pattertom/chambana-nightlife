@@ -12,6 +12,22 @@ class Event_model extends Model {
         $query = $this->db->get('event');
         return $query;
     }
+    
+    function get_all_events_with_ratings()
+	{
+		$query = $this->db->query("
+			SELECT event.id, event.name, event.address, C.average, event.image_id
+			FROM event LEFT JOIN 
+				(SELECT eventreview.eventID, AVG(eventreview.rating) as average
+				FROM eventreview
+				WHERE approvedByAdmin = 1
+				GROUP BY eventreview.eventID) C
+			ON event.id = C.eventID
+			GROUP BY event.id
+			ORDER BY C.average DESC
+		");
+		return $query;
+	}
 	
 	function get_event($id)
     {
