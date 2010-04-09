@@ -13,9 +13,16 @@ class Drink extends Controller {
 	function index()
 	{
 		$this->load->model('Drink_model');
+		$this->load->model('image_model');
 		$data['result'] = $this->Drink_model->get_all_drinks();
+		$images = array();
+		foreach ($data['result']->result() as $row)
+		{
+			$images[] = $this->image_model->get_scale_image_string($row->image_id,100,200);
+		}
+		$data['images'] = $images;
 		$this->load->view('header');
-		$this->load->view('Drink/Drink_view', $data);
+		$this->load->view('Drink/Drink_view_all', $data);
 		$this->load->view('footer');
 	}
 
@@ -23,6 +30,19 @@ class Drink extends Controller {
 	{
 		$this->load->view('header');
 		$this->load->view('Drink/Drink_insert_form');
+		$this->load->view('footer');
+	}
+	
+	function viewDrink($name)
+	{
+		$this->load->model('Drink_model');
+		$this->load->model('image_model');
+		$data['result'] = $this->Drink_model->get_drink($name);
+		$drink = $data['result']->row();
+		$data['image'] = $this->image_model->get_scale_image_string($drink->image_id,300,500);
+
+		$this->load->view('header');
+		$this->load->view('Drink/Drink_single_view', $data);
 		$this->load->view('footer');
 	}
 	

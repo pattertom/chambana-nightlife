@@ -7,6 +7,7 @@ dbConnect();
 echo('<br />Creating Drink table...<br />');
 $response = mysql_query("CREATE TABLE IF NOT EXISTS Drink (
   name varchar(50) NOT NULL,
+  image_id int(11) NOT NULL default 0,
   description varchar(400),
   PRIMARY KEY (name)
 )");

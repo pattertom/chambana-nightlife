@@ -9,3 +9,5 @@ To view a single bar go to the bar page and click on the bar name.
 
 Added a way for admins to approve barreviews and only admins can delete barreviews
 Added doctype so everything should display the same in all browsers
+
+Added image_id int(11) default 0 to drink table.
