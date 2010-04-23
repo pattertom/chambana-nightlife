@@ -29,6 +29,26 @@ class Bar_model extends Model {
 		return $query;
 	}
 	
+	/**
+	 * Gets the bars that are also liked by users who liked the specified bar
+	 *
+	 * Returns an the query result
+	 *
+	 * @param string name
+	 * name of the bar to query
+	 */	
+	function get_bars_also_liked($name)
+	{
+		$query = $this->db->query("
+			SELECT T2.barName, COUNT(T2.barName) as count
+			FROM barreview T1, barreview T2
+			WHERE T1.rating >= 7 AND T2.rating >= 7 AND T1.userName = T2.userName AND T1.barName = '".$name."' AND T2.barName != '".$name."'
+			GROUP BY T2.barName
+			ORDER BY count DESC LIMIT 0,5;
+		");
+		return $query;
+	}
+	
 	function get_bar($name)
     {
 		$query = $this->db->query("SELECT * FROM bar WHERE name = '".$name."'");

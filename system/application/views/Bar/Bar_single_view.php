@@ -242,6 +242,17 @@ foreach($reviews->result() as $row)
         GSearch.setOnLoadCallback(LoadMapSearchControl);
         </script>
         <!-- ++End Map Search Control Wizard Generated Code++ --> 
+		
+		<?php
+		echo '<br /><h1 class="underlined">Users who liked '. $bar->name .' also like:</h1>';
+		$noBars = TRUE;
+		foreach($otherBars->result() as $row)
+		{
+			$noBars = FALSE;
+			echo $row->barName . '<br />';
+		}
+		if($noBars) echo 'No other bars';
+		?>
     </div>
             
 	
