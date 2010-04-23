@@ -9,7 +9,7 @@ class Event_model extends Model {
 	
     function get_all_events()
     {
-        $query = $this->db->get('event');
+        $query = $this->db->query('SELECT * FROM event WHERE date > NOW() ORDER BY date');
         return $query;
     }
     

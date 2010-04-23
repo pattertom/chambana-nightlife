@@ -14,7 +14,7 @@ class Event extends Controller {
 	{
 		$this->load->model('Event_model');
 		$this->load->model('image_model');
-		$data['result'] = $this->Event_model->get_all_events_with_ratings();
+		$data['result'] = $this->Event_model->get_all_events();
 		$images = array();
 		foreach ($data['result']->result() as $row)
 		{
