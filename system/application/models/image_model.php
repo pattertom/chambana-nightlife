@@ -22,7 +22,7 @@ class Image_model extends Model {
 		foreach(array('w','h') as $v) { $m = "m{$v}";
 			if(${$v} > ${$m} && ${$m}) { $o = ($v == 'w') ? 'h' : 'w';
 			$r = ${$m} / ${$v}; ${$v} = ${$m}; ${$o} = ceil(${$o} * $r); } }
-		return '<img src="/index.php/image/display/'. $id . '" height="'.$h.'" width="'.$w.'" />';
+		return '<img src="'.site_url('/image/display/'. $id) . '" height="'.$h.'" width="'.$w.'" />';
 	}
 }
 ?>
