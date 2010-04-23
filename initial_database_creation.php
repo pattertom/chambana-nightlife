@@ -7,7 +7,7 @@ dbConnect();
 echo('<br />Creating Drink table...<br />');
 $response = mysql_query("CREATE TABLE IF NOT EXISTS Drink (
   name varchar(50) NOT NULL,
-  image_id int(11) NOT NULL default 0,
+  image_id int(11) NOT NULL default -1,
   description varchar(400),
   PRIMARY KEY (name)
 )");
@@ -19,7 +19,7 @@ if (!$response)
 echo('<br />Creating Bar table...<br />');
 $response = mysql_query("CREATE TABLE IF NOT EXISTS Bar (
   name varchar(50) NOT NULL,
-  image_id int(11) NOT NULL default 0,
+  image_id int(11) NOT NULL default -1,
   rating int(11) NOT NULL default 8,
   description varchar(1000),
   address varchar(400),
@@ -46,7 +46,7 @@ echo('<br />Creating Event table...<br />');
 $response = mysql_query("CREATE TABLE IF NOT EXISTS Event (
   id int(11) NOT NULL auto_increment,
   name varchar(50) NOT NULL,
-  image_id int(11) NOT NULL default 0,
+  image_id int(11) NOT NULL default -1,
   price int(11) NOT NULL default 0,
   type varchar(20) NOT NULL,
   description varchar(400),
@@ -151,7 +151,7 @@ echo('<br />Creating Image table...<br />');
 $response = mysql_query("CREATE TABLE IF NOT EXISTS Image (
     image_id int(11) not null auto_increment,
     image_type varchar(25) not null default '',
-    image blob not null,
+    image MEDIUMblob not null,
     image_height varchar(25) not null default '',
     image_width varchar(25) not null default '',
     image_size varchar(25) not null default '',
