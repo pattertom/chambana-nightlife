@@ -48,13 +48,23 @@ echo '<div class="title">'.$bar->name.'</div><hr /><br />';
 $sunday = $monday = $tuesday = $wednesday = $thursday = $friday = $saturday = array();
 foreach ($specials->result() as $row)
 {
-	if($row->weeklyDay == 'Sunday') $sunday[] = $row->description;
-	else if($row->weeklyDay == 'Monday') $monday[] = $row->description;
-	else if($row->weeklyDay == 'Tuesday') $tuesday[] = $row->description;
-	else if($row->weeklyDay == 'Wednesday') $wednesday[] = $row->description;
-	else if($row->weeklyDay == 'Thursday') $thursday[] = $row->description;
-	else if($row->weeklyDay == 'Friday') $friday[] = $row->description;
-	else if($row->weeklyDay == 'Saturday') $saturday[] = $row->description;
+	if($row->isWeekly == 0){
+		$timestamp = $row->dateSpecial;
+		$time = strtotime($timestamp);
+		$today = date("Y-m-d");
+		$today = strtotime($today); 
+		if ($time < $today) $weeklyDay = "-1"; 
+		else $weeklyDay = date("l", $time);
+		$row->description = "<b>".date("F j", strtotime($row->dateSpecial)) . ": </b>". $row->description;
+	}
+	else $weeklyDay = $row->weeklyDay;
+	if($weeklyDay == 'Sunday') $sunday[] = $row->description;
+	else if($weeklyDay == 'Monday') $monday[] = $row->description;
+	else if($weeklyDay == 'Tuesday') $tuesday[] = $row->description;
+	else if($weeklyDay == 'Wednesday') $wednesday[] = $row->description;
+	else if($weeklyDay == 'Thursday') $thursday[] = $row->description;
+	else if($weeklyDay == 'Friday') $friday[] = $row->description;
+	else if($weeklyDay == 'Saturday') $saturday[] = $row->description;
 }
 $count = 0;
 $continue = true;
@@ -144,7 +154,7 @@ if(!$reviewed)
 else echo '<b>Thank you for submitting your review.  It is now awaiting admin approval!</b>';
 foreach($reviews->result() as $row)
 {
-	echo '<div class="commentHeader"> Review by <font color="white">'.$row->userName.'</font> <div class="time">on ' . date("g:i a F j, Y", strtotime($row->ts)).'</div></div>';
+	echo '<div class="commentHeader"> Review by <font color="white">'.$row->userName.'</font> - Rating: '.$row->rating.'<div class="time">on ' . date("g:i a F j, Y", strtotime($row->ts)).'</div></div>';
 	echo $row->reviewContent . '<br />';
 }
 

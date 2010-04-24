@@ -6,6 +6,24 @@ class Search_model extends Model {
         parent::Model();
 		$this->load->database();
     }
+
+	function search_bars($search_term)
+	{
+		$query = $this->db->query("SELECT * FROM bar WHERE name LIKE '%".$search_term."%' OR description LIKE '%".$search_term."%'");
+		return $query;
+	}
+	
+	function search_events($search_term)
+	{
+		$query = $this->db->query("SELECT * FROM event WHERE name LIKE '%".$search_term."%' OR description LIKE '%".$search_term."%'");
+		return $query;
+	}
+	
+	function search_drinks($search_term)
+	{
+		$query = $this->db->query("SELECT * FROM drink WHERE name LIKE '%".$search_term."%' OR description LIKE '%".$search_term."%'");
+		return $query;
+	}
 	
 	function get_all_results()
     {

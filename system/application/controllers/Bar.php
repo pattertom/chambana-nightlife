@@ -128,6 +128,7 @@ class Bar extends Controller {
 		$data['specials'] = $this->BarSpecial_model->get_bar_specials($name);
 		$data['reviews'] = $this->BarReview_model->get_reviews_for_bar($name);
 		$data['rating'] = $this->BarReview_model->get_average_for_bar($name);
+		$data['otherBars'] = $this->Bar_model->get_bars_also_liked($name);
 		/* User has not just submitted a review, set reviewed to false
 		* so that it displays the review form */
 		$data['reviewed'] = TRUE;
