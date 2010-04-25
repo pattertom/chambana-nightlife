@@ -3,6 +3,9 @@ class BarSpecial extends Controller {
 
 	function show_all()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('BarSpecial_model');
 		$data['result'] = $this->BarSpecial_model->get_all_barspecials();
 		$this->load->view('header');
@@ -12,6 +15,9 @@ class BarSpecial extends Controller {
 	
 	function index()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('BarSpecial_model');
 		$data['result'] = $this->BarSpecial_model->get_all_barspecials();
 		$this->load->view('header');
@@ -21,6 +27,9 @@ class BarSpecial extends Controller {
 
 	function insert()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->view('header');
 		$this->load->view('BarSpecial/BarSpecial_insert_form');
 		$this->load->view('footer');
@@ -28,6 +37,9 @@ class BarSpecial extends Controller {
 	
 	function create()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('BarSpecial_model');
         $barName = $this->input->post('barName');
 		$isWeekly = $this->input->post('isWeekly');
@@ -47,6 +59,9 @@ class BarSpecial extends Controller {
 	
 	function delete($id)
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('BarSpecial_model');
 		$this->BarSpecial_model->delete_barspecial($id);
 		$data['result'] = $this->BarSpecial_model->get_all_barspecials();

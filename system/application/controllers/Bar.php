@@ -8,6 +8,9 @@ class Bar extends Controller {
 	 */	
 	function show_all()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('Bar_model');
 		$data['result'] = $this->Bar_model->get_all_bars();
 		$this->load->view('header');
@@ -43,6 +46,9 @@ class Bar extends Controller {
 	 */	
 	function insert()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->view('header');
 		$this->load->view('Bar/Bar_insert_form');
 		$this->load->view('footer');
@@ -79,6 +85,9 @@ class Bar extends Controller {
 	
 	function create()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('Bar_model');
 		$name = $this->input->post('name');
         $rating = $this->input->post('rating');
@@ -99,6 +108,9 @@ class Bar extends Controller {
 	
 	function delete($name)
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	    
 		$this->load->model('Bar_model');
 		$this->Bar_model->delete_bar($name);
 		$data['result'] = $this->Bar_model->get_all_bars();

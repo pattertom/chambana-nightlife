@@ -3,6 +3,9 @@ class User extends Controller {
 	
 	function index()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('user_model');
 		$data['result'] = $this->user_model->get_all_users();
 		$this->load->view('header');
@@ -12,6 +15,9 @@ class User extends Controller {
 
 	function insert()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->view('header');
 		$this->load->view('user/signup');
 		$this->load->view('footer');
@@ -19,6 +25,9 @@ class User extends Controller {
 	
 	function create()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('user_model');
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
@@ -35,6 +44,9 @@ class User extends Controller {
 
 	function promote($username)
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('user_model');
 		$this->user_model->promote_user($username);
 		$data['result'] = $this->user_model->get_all_users();
@@ -45,6 +57,9 @@ class User extends Controller {
 	
 	function delete($username)
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('user_model');
 		$this->user_model->delete_user($username);
 		$data['result'] = $this->user_model->get_all_users();
