@@ -56,6 +56,24 @@ class Event_model extends Model {
                  , '".$address."')");
 	}
 	
+	function edit_event($name, $price, $type, $description, $date, $address)
+	{
+	    $image_type = $_FILES['image']['type'];
+	    $image_data = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+        list($image_width, $image_height) = getimagesize($_FILES['image']['tmp_name']);
+	    $image_size = $_FILES['image']['size'];
+	    $image_ctgy = 'event';
+	    $image_name = $name;
+	    
+	    $query = $this->db->query("UPDATE image SET image_type='".$image_type."', image='".$image_data."', image_height='".$image_height."', image_width='".$image_width."', image_size='".$image_size."', image_ctgy='".$image_ctgy."' WHERE image_name='".$image_name."'");
+		
+		$query = $this->db->query("SELECT * FROM image ORDER BY image_id DESC LIMIT 0,1");
+		$row = $query->row();
+		$image_id = $row->image_id;
+	    
+    	$query = $this->db->query("UPDATE event SET image_id='".$image_id."', price='".$price."', type='".$type."', description='".$description."', date='".$date."', address='".$address."' WHERE name='".$name."'"); 
+	}
+	
 	function delete_event($id)
 	{
 		$query = $this->db->query("DELETE FROM event WHERE id='".$id."'");

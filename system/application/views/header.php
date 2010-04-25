@@ -26,6 +26,7 @@
 			<a href="<?php echo site_url('bar')?>">Bars</a>
 			<a href="<?php echo site_url('event')?>">Events</a>
 			<?php if ($this->session->userdata('admin') == TRUE) {?>
+			<a href="<?php echo site_url('admin')?>">Admin</a>
 			<a href="<?php echo site_url('barspecial')?>">Specials</a>
             <a href="<?php echo site_url('user')?>">User</a>
 			<?php } ?>
