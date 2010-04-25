@@ -8,6 +8,9 @@ class Bar extends Controller {
 	 */	
 	function show_all()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('Bar_model');
 		$data['result'] = $this->Bar_model->get_all_bars();
 		$this->load->view('header');
@@ -55,6 +58,9 @@ class Bar extends Controller {
 	 */	
 	function insert()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->view('header');
 		$this->load->view('Bar/Bar_insert_form');
 		$this->load->view('footer');
@@ -92,7 +98,9 @@ class Bar extends Controller {
 	
 	function create()
 	{
-	   
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+            
 		$this->load->model('Bar_model');
 		$name = $this->input->post('name');
         
@@ -114,8 +122,10 @@ class Bar extends Controller {
 	}
 	
 	function delete($name)
-	{
-	   
+	{	   
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	    
 		$this->load->model('Bar_model');
 		$this->Bar_model->delete_bar($name);
 		$data['result'] = $this->Bar_model->get_all_bars();
@@ -145,6 +155,7 @@ class Bar extends Controller {
 		$data['specials'] = $this->BarSpecial_model->get_bar_specials($name);
 		$data['reviews'] = $this->BarReview_model->get_reviews_for_bar($name);
 		$data['rating'] = $this->BarReview_model->get_average_for_bar($name);
+		$data['otherBars'] = $this->Bar_model->get_bars_also_liked($name);
 		/* User has not just submitted a review, set reviewed to false
 		* so that it displays the review form */
 		$data['reviewed'] = TRUE;

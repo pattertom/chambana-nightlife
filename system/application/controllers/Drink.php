@@ -3,6 +3,9 @@ class Drink extends Controller {
 
 	function show_all()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('Drink_model');
 		$data['result'] = $this->Drink_model->get_all_drinks();
 		$this->load->view('header');
@@ -28,6 +31,9 @@ class Drink extends Controller {
 
 	function insert()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->view('header');
 		$this->load->view('Drink/Drink_insert_form');
 		$this->load->view('footer');
@@ -48,6 +54,9 @@ class Drink extends Controller {
 	
 	function create()
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('Drink_model');
 		$name = $this->input->post('name');
 		$description = $this->input->post('description');
@@ -62,6 +71,9 @@ class Drink extends Controller {
 	
 	function delete($name)
 	{
+	    if ($this->session->userdata('admin') == FALSE)
+	        redirect('dashboard/index');
+	        
 		$this->load->model('Drink_model');
 		$this->Drink_model->delete_drink($name);
 		$data['result'] = $this->Drink_model->get_all_drinks();

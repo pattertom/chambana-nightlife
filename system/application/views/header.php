@@ -25,12 +25,17 @@
 			<a href="<?php echo site_url('drink')?>">Drinks</a>
 			<a href="<?php echo site_url('bar')?>">Bars</a>
 			<a href="<?php echo site_url('event')?>">Events</a>
+			<?php if ($this->session->userdata('admin') == TRUE) {?>
 			<a href="<?php echo site_url('barspecial')?>">Specials</a>
             <a href="<?php echo site_url('search')?>">Search</a>
-			<?php if (!$this->session->userdata('logged_in'))
-    			echo '<a href="'.site_url('login').'">Login</a>';
+            <a href="<?php echo site_url('user')?>">User</a>
+			<?php } ?>
+            <a href="<?php echo site_url('search')?>">Search</a>
+            <?php
+			    if (!$this->session->userdata('logged_in'))
+    			    echo '<a href="'.site_url('login').'">Login</a>';
     		    else
-                echo '<a href="'.site_url('login/logout').'">Logout</a>';
+                    echo '<a href="'.site_url('login/logout').'">Logout</a>';
             ?>
 			
 			<div id="searchbar">
