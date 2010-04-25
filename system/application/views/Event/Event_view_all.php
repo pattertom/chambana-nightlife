@@ -16,4 +16,6 @@ foreach ($result->result() as $row)
 echo '</table>';
 ?>
 <br /><br />
+<?php if ($this->session->userdata('admin') == TRUE) { ?>
 <a href="<?php echo site_url('event/insert'); ?>" class="black"> Insert a new event </a>
+<?php } ?>

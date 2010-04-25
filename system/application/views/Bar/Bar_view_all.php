@@ -29,4 +29,6 @@ echo '</table>';
 ?>
 
 <br /><br />
-<a href="<?php echo site_url('bar/insert'); ?>" class="black"> Insert a new bar </a>
+<?php if ($this->session->userdata('admin') == TRUE) { ?>
+    <a href="<?php echo site_url('bar/insert'); ?>" class="black"> Insert a new bar </a>
+<?php } ?>
