@@ -33,8 +33,8 @@ $this->load->helper('url');
 		
 		//Begin simple xml for weather
 		//TODO: Trim the description string so its just the condition and temp (no image)
-		$xml = simplexml_load_file("http://rss.weather.com/weather/rss/local/61801?cm_ven=LWO&cm_cat=rss&par=LWO_rss");
-		echo "Going to the bars?  Here's the weather right now:<br />";
+		$xml = simplexml_load_file("http://feeds.weatherbug.com/rss.aspx?zipcode=61801&feed=currtxt&zcode=z4641");
+		echo "<br />Going to the bars?  Here's the weather right now:<br /><br />";
 		echo $xml->channel->item[0]->description;
 		// End weather
 		?> 

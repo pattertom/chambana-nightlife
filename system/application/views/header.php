@@ -29,7 +29,6 @@
 			<a href="<?php echo site_url('barspecial')?>">Specials</a>
             <a href="<?php echo site_url('user')?>">User</a>
 			<?php } ?>
-            <a href="<?php echo site_url('search')?>">Search</a>
             <?php
 			    if (!$this->session->userdata('logged_in'))
     			    echo '<a href="'.site_url('login').'">Login</a>';
