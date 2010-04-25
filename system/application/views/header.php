@@ -10,6 +10,13 @@
 	<link rel="stylesheet" type="text/css" href="/css/text.css" />
 	<link rel="stylesheet" type="text/css" href="/css/forms.css" />
 	<script type="text/javascript" src="/scripts/common.js"></script>
+    <script type="text/javascript" src="/js/prototype.js"></script>
+    <script type="text/javascript" src="/js/scriptaculous.js"></script>
+    <?php
+    if (isset($extraHeadContent)) {
+	echo $extraHeadContent;
+    }
+    ?>
 </head>
 <body>
 	<div class="site_top">
@@ -19,7 +26,7 @@
 			<a href="<?php echo site_url('bar')?>">Bars</a>
 			<a href="<?php echo site_url('event')?>">Events</a>
 			<a href="<?php echo site_url('barspecial')?>">Specials</a>
-            <a href="<?php echo site_url()?>">Search</a>
+            <a href="<?php echo site_url('search')?>">Search</a>
 			<?php if (!$this->session->userdata('logged_in'))
     			echo '<a href="'.site_url('login').'">Login</a>';
     		    else

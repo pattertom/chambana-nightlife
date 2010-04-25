@@ -16,7 +16,7 @@ class BarSpecial_model extends Model {
 	
 	function get_todays_specials()
 	{
-		$query = $this->db->query("SELECT * FROM barspecial WHERE isWeekly = 1 AND weeklyDay LIKE  '%".date("l")."%'");
+		$query = $this->db->query("SELECT * FROM barspecial WHERE (isWeekly = 1 AND weeklyDay LIKE  '%".date("l")."%') OR (isWeekly = 0 AND DAY(dateSpecial) = DAY(CURDATE()) AND MONTH(dateSpecial) = MONTH(CURDATE()))");
 		return $query;
 	}
 	

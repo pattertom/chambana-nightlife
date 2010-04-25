@@ -1,7 +1,19 @@
 <?php
 $this->load->helper('url');
 $this->load->helper('form');
+			echo "<div id=\"searchbar\">
+            <div id=\"autosuggest\"><ul></ul></div>";
 
+
+				
+				echo form_open_multipart('search/searcher');
+				$js = 'onClick="clickIntoSearchBox()"';
+				echo 'Search: ' . form_input('drink', 'Search Here', $js);
+
+				echo form_submit('main_search', 'Search');
+				echo form_close();
+				
+			echo "</div>";
 echo '<table><tr><th><b>Name</b></th><th><b>Description</b></th>';
 foreach ($result->result() as $row)
 {

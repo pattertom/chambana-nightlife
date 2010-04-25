@@ -24,17 +24,29 @@ class Bar extends Controller {
 	{
 		$this->load->model('Bar_model');
 		$this->load->model('image_model');
-		$data['result'] = $this->Bar_model->get_all_bars_with_ratings();
+        
+		$data['extraHeadContent'] = '<script type="text/javascript" src="'. base_url().'js/function_search.js"></script>';
+    	
+        $data['result'] = $this->Bar_model->get_all_bars_with_ratings();
 		$images = array();
 		foreach ($data['result']->result() as $row)
 		{
 			$images[] = $this->image_model->get_scale_image_string($row->image_id,200,500);
 		}
 		$data['images'] = $images;
-		$this->load->view('header');
+		$this->load->view('header',$data);
 		$this->load->view('Bar/Bar_view_all', $data);
 		$this->load->view('footer');
 	}
+
+    function ajaxsearch()
+    {
+        
+  		$function_name = $this->input->post('function_name');
+        $this->load->model('Bar_model');
+        echo $this->Bar_model->getSearchResults($function_name);
+    }
+    
 
 	/**
 	 * insert
@@ -58,6 +70,7 @@ class Bar extends Controller {
 	 */		
 	function viewBar($name)
 	{
+	   
 		$this->load->model('Bar_model');
 		$this->load->model('BarSpecial_model');
 		$this->load->model('BarReview_model');
@@ -79,17 +92,20 @@ class Bar extends Controller {
 	
 	function create()
 	{
+	   
 		$this->load->model('Bar_model');
 		$name = $this->input->post('name');
-        $rating = $this->input->post('rating');
+        
 		$description = $this->input->post('description');
 		$description = nl2br($description);
 		$description = quotes_to_entities($description);
         $specials = $this->input->post('specials');
         $address = $this->input->post('address');
+        $weburl = $this->input->post('weburl');
         
-		if($name && $rating && $description && $specials && $address) {
-			$this->Bar_model->create_bar($name, $rating, $description, $specials, $address);
+		if($name &&  $description && $specials && $address) {
+		
+			$this->Bar_model->create_bar($name, $description, $specials, $address, $weburl);
 		}
 		$data['result'] = $this->Bar_model->get_all_bars();
 		$this->load->view('header');
@@ -99,6 +115,7 @@ class Bar extends Controller {
 	
 	function delete($name)
 	{
+	   
 		$this->load->model('Bar_model');
 		$this->Bar_model->delete_bar($name);
 		$data['result'] = $this->Bar_model->get_all_bars();

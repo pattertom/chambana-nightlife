@@ -20,6 +20,7 @@ $this->load->helper('form');
 $bar = $result->row();
 $averageRating = $rating->row();
 
+
 // Set up the left column and display the header
 echo '<div class="contentLeftColumn">';
 echo '<div class="title">'.$bar->name.'</div><hr /><br />';
@@ -225,7 +226,7 @@ foreach($reviews->result() as $row)
                 zoomControl : GSmapSearchControl.ZOOM_CONTROL_ENABLE_ALL,
                 title : "<?php echo $bar->name ?>",
                 <!-- Need to specify a url for the bar otherwise the title does not show up -->
-                url : "<?php echo site_url('bar/viewBar/' .$bar->name) ?>",
+                url : "<?php echo $bar->weburl ?>",
                 idleMapZoom : GSmapSearchControl.ACTIVE_MAP_ZOOM,
                 activeMapZoom : GSmapSearchControl.ACTIVE_MAP_ZOOM
                 }

@@ -20,9 +20,9 @@ echo('<br />Creating Bar table...<br />');
 $response = mysql_query("CREATE TABLE IF NOT EXISTS Bar (
   name varchar(50) NOT NULL,
   image_id int(11) NOT NULL default -1,
-  rating int(11) NOT NULL default 8,
   description varchar(1000),
   address varchar(400),
+  weburl varchar(100),
   PRIMARY KEY (name)
 )");
 

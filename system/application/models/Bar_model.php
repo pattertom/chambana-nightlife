@@ -51,12 +51,38 @@ class Bar_model extends Model {
 	
 	function get_bar($name)
     {
+        
 		$query = $this->db->query("SELECT * FROM bar WHERE name = '".$name."'");
 		return $query;
     }
 	
-	function create_bar($name,$rating, $description, $specials, $address)
+	function getSearchResults ($name)
 	{
+	   
+	    $this->load->database();
+        $query = $this->db->query("SELECT name FROM bar WHERE name LIKE '%".$name."%'");
+        
+        //if($query->numRows()>0)
+        //{
+            	$output = '<ul>';
+			    foreach ($query->result() as $function_info) 
+                {
+		          $output .= '<li>' . $function_info->name . '</li>';
+				}
+		
+			$output .= '</ul>';
+			return $output;
+        //}
+        			//else {
+        			 //return '<p>Sorry, no results returned.</p>';
+                //}
+        
+		
+	}
+    
+	function create_bar($name, $description, $specials, $address, $weburl)
+	{
+
 	    $image_type = $_FILES['image']['type'];
 	    $image_data = addslashes(file_get_contents($_FILES['image']['tmp_name']));
         list($image_width, $image_height) = getimagesize($_FILES['image']['tmp_name']);
@@ -71,8 +97,8 @@ class Bar_model extends Model {
 		$row = $query->row();
 		$image_id = $row->image_id;
 
-		$query = $this->db->query("INSERT INTO bar (name, image_id, rating, description, address) VALUES
-			('".$name."','".$image_id."','".$rating."','".$description."','".$address."')");
+		$query = $this->db->query("INSERT INTO bar (name, image_id, description, address, weburl) VALUES
+			('".$name."','".$image_id."','".$description."','".$address."','".$weburl."')");
 	}
 	
 	function delete_bar($name)
