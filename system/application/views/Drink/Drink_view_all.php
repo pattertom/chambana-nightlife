@@ -1,7 +1,7 @@
 <?php
 $this->load->helper('url');
 
-echo '<h1 class="underlined">Drinks in the Chambana area</h2>';
+echo '<h1 class="underlined">Drinks in the Chambana area</h1>';
 echo '<table class="display">';
 $count = 0;
 foreach ($result->result() as $row)

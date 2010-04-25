@@ -24,6 +24,8 @@ echo '<div class="title">'.$drink->name.'</div><hr /><br />';
 
 // Display the description ?>
 <div class="paragraph"><?php echo $drink->description?></div>
+</div>
+
 <div class="contentRightColumn">
 
 	<center><?php echo $image ?></center>

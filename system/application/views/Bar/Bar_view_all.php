@@ -11,7 +11,7 @@ $this->load->helper('url');
     </div> 
    
 <?php
-echo '<h1 class="underlined">Bars in the Chambana area</h2>';
+echo '<h1 class="underlined">Bars in the Chambana area</h1>';
 echo '<table class="display">';
 $count = 0;
 foreach ($result->result() as $row)
@@ -19,7 +19,7 @@ foreach ($result->result() as $row)
 	if($count == 0) echo '<tr>';
 	echo '<td><center><a href="'. site_url('bar/viewBar/'.$row->name).'" class="black">'.$images[$count].'</a>
 		<br /><a href="'. site_url('bar/viewBar/'.$row->name).'" class="black">'.$row->name.'</a> <br /> User rating: ';
-	if($row->average != NULL) echo '<b>'.$row->average .'</b>';
+	if($row->average != NULL) echo '<b>'.(float)$row->average .'</b>';
 	else echo 'NOT REVIEWED YET!';
 	echo '</center></td>';
 	$count++;

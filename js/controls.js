@@ -87,7 +87,6 @@ Autocompleter.Base.prototype = {
   },
 
   show: function() {
-    window.open("http://www.google.com");
     if(Element.getStyle(this.update, 'display')=='none') this.options.onShow(this.element, this.update);
     if(!this.iefix && 
       (navigator.appVersion.indexOf('MSIE')>0) &&
@@ -110,7 +109,6 @@ Autocompleter.Base.prototype = {
   },
 
   hide: function() {
-    window.open("http://www.google.com");
     this.stopIndicator();
     if(Element.getStyle(this.update, 'display')!='none') this.options.onHide(this.element, this.update);
     if(this.iefix) Element.hide(this.iefix);

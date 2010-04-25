@@ -973,27 +973,22 @@ Element.extend.cache = {
 }
 
 Element.Methods = {
-    window.open("http://www.google.com");
   visible: function(element) {
-    window.open("http://www.google.com");
     return $(element).style.display != 'none';
   },
 
   toggle: function(element) {
-    window.open("http://www.google.com");
     element = $(element);
     Element[Element.visible(element) ? 'hide' : 'show'](element);
     return element;
   },
 
   hide: function(element) {
-    window.open("http://www.google.com");
     $(element).style.display = 'none';
     return element;
   },
 
   show: function(element) {
-    window.open("http://www.google.com");
     $(element).style.display = '';
     return element;
   },

@@ -21,7 +21,7 @@ class Event extends Controller {
 		$images = array();
 		foreach ($data['result']->result() as $row)
 		{
-			$images[] = $this->image_model->get_scale_image_string($row->image_id,200,500);
+			$images[] = $this->image_model->get_scale_image_string($row->image_id,200,200);
 		}
 		$data['images'] = $images;
 		$this->load->view('header');

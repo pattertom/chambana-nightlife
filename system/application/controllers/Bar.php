@@ -44,12 +44,10 @@ class Bar extends Controller {
 
     function ajaxsearch()
     {
-        
-  		$function_name = $this->input->post('function_name');
+        $function_name = $this->input->post('function_name');
         $this->load->model('Bar_model');
         echo $this->Bar_model->getSearchResults($function_name);
     }
-    
 
 	/**
 	 * insert

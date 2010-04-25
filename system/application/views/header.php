@@ -27,7 +27,6 @@
 			<a href="<?php echo site_url('event')?>">Events</a>
 			<?php if ($this->session->userdata('admin') == TRUE) {?>
 			<a href="<?php echo site_url('barspecial')?>">Specials</a>
-            <a href="<?php echo site_url('search')?>">Search</a>
             <a href="<?php echo site_url('user')?>">User</a>
 			<?php } ?>
             <a href="<?php echo site_url('search')?>">Search</a>
