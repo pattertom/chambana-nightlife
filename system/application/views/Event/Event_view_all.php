@@ -9,9 +9,11 @@ foreach ($result->result() as $row)
 	if($count == 0) echo '<tr>';
 	echo '<td><center><a href="'. site_url('event/view_event/'.$row->id).'" class="black">'.$images[$count].'</a>
 		<br /><a href="'. site_url('event/view_event/'.$row->id).'" class="black">'.$row->name.'</a><br />'.date("g:i a F j, Y", strtotime($row->date));
-	echo '</center></td>';
+	echo 
+    // '<br />'. $row->tag_name .
+	'</center></td>';
 	$count++;
-	if($count % 3 == 0) echo '</tr>';
+	if($count % 5 == 0) echo '</tr>';
 }
 echo '</table>';
 ?>

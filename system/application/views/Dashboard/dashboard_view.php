@@ -34,7 +34,7 @@ $this->load->helper('url');
 		
 		//Begin simple xml for weather
 		$xml = simplexml_load_file("http://feeds.weatherbug.com/rss.aspx?zipcode=61801&feed=currtxt&zcode=z4641");
-		echo "<br />Going to the bars?  Here's the weather right now:<br /><br />";
+		echo "<br /><b>Going to the bars?  Here's the weather right now:</b><br /><br />";
 		echo $xml->channel->item[0]->description;
 		// End weather
 		?> 

@@ -178,5 +178,16 @@ $response = mysql_query("CREATE TABLE IF NOT EXISTS Image (
 
 if (!$response)
     echo('Image table failed: ' . mysql_error());
+    
+// create tag table
+echo('<br />Creating tag table...<br />');
+$response = mysql_query("CREATE TABLE IF NOT EXISTS tag (
+    event_id int(11) not null default -1,
+    tag_name varchar(50) not null default '',
+    PRIMARY KEY (event_id, tag_name)
+);");
+
+if (!$response)
+    echo('tag table failed: ' . mysql_error());
 
 ?>

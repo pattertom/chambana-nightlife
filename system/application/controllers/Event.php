@@ -17,11 +17,11 @@ class Event extends Controller {
 	{
 		$this->load->model('Event_model');
 		$this->load->model('image_model');
-		$data['result'] = $this->Event_model->get_all_events();
+		$data['result'] = $this->Event_model->get_upcoming_events();
 		$images = array();
 		foreach ($data['result']->result() as $row)
 		{
-			$images[] = $this->image_model->get_scale_image_string($row->image_id,200,200);
+			$images[] = $this->image_model->get_scale_image_string($row->image_id,150,150);
 		}
 		$data['images'] = $images;
 		$this->load->view('header');
@@ -89,7 +89,9 @@ class Event extends Controller {
 		$this->load->model('Event_model');
 		$this->load->model('EventReview_model');
 		$this->load->model('image_model');
+		$this->load->model('tag_model');
 		$data['result'] = $this->Event_model->get_event($id);
+		$data['tags'] = $this->tag_model->get_all_tags_from($id);
 		$event = $data['result']->row();
 		$data['image'] = $this->image_model->get_scale_image_string($event->image_id,300,500);
 		$data['reviews'] = $this->EventReview_model->get_reviews_for_event($id);
@@ -97,7 +99,7 @@ class Event extends Controller {
 		$this->load->view('header');
 		$this->load->view('Event/Event_single_view', $data);
 		$this->load->view('footer');
-	}	
+	}
 	
 	function view_event_reviewed($id)
 	{
@@ -111,6 +113,23 @@ class Event extends Controller {
 		$data['reviewed'] = TRUE;
 		$this->load->view('header');
 		$this->load->view('Event/Event_single_view', $data);
+		$this->load->view('footer');
+	}
+	
+	function view_tag($tag)
+	{
+		$this->load->model('Event_model');
+		$this->load->model('image_model');
+		$this->load->model('tag_model');
+		$data['result'] = $this->tag_model->get_all_events_with($tag);
+		$images = array();
+		foreach ($data['result']->result() as $row)
+		{
+			$images[] = $this->image_model->get_scale_image_string($row->image_id,150,150);
+		}
+		$data['images'] = $images;
+		$this->load->view('header');
+		$this->load->view('Event/Event_view_all', $data);
 		$this->load->view('footer');
 	}
 }

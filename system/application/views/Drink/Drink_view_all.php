@@ -8,10 +8,12 @@ foreach ($result->result() as $row)
 {
 	if($count == 0) echo '<tr>';
 	echo '<td><center><a href="'. site_url('drink/viewDrink/'.$row->name).'" class="black">'.$images[$count].'</a>
-		<br /><a href="'. site_url('drink/viewDrink/'.$row->name).'" class="black">'.$row->name.'</a>';
+		<br /><a href="'. site_url('drink/viewDrink/'.$row->name).'" class="black">'.$row->name.'</a> <br /> User rating: ';
+	if($row->average != NULL) echo '<b>'.round((float)$row->average, 1).'</b>';
+	else echo 'NOT REVIEWED YET!';
 	echo '</center></td>';
 	$count++;
-	if($count % 3 == 0) echo '</tr>';
+	if($count % 5 == 0) echo '</tr>';
 }
 echo '</table>';
 ?>

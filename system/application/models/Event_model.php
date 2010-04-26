@@ -16,8 +16,19 @@ class Event_model extends Model {
 	
 	function get_upcoming_events()
     {
-        $query = $this->db->query('SELECT * FROM event WHERE date > NOW() ORDER BY date LIMIT 0,8');
+        $query = $this->db->query('SELECT * FROM event WHERE date > NOW() ORDER BY date LIMIT 0,10');
         return $query;
+    }
+    
+    function get_upcoming_events_with_tags()
+    {
+        $query = $this->db->query('SELECT id, name, date, tag_name, image_id
+        FROM event LEFT JOIN 
+            (SELECT tag.event_id, tag.tag_name
+             FROM tag, event
+             WHERE event_id = id) C
+         ON id = C.event_id');
+         return $query;
     }
 	 
     function get_all_events_with_ratings()

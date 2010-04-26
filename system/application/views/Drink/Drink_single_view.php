@@ -72,7 +72,7 @@ foreach($reviews->result() as $row)
 	<center><?php echo $image ?></center>
 	
 	<h1 class="underlined">User Rating</h2>
-    <div class="paragraph"><?php echo $drink->name; ?> has an average user rating of <b><?php echo (float)$average_rating->average; ?></b></div>
+    <div class="paragraph"><?php echo $drink->name; ?> has an average user rating of <b><?php echo round((float)$average_rating->average, 1); ?></b></div>
 	
 	<?php
 	echo '<br /><h1 class="underlined">Users who liked '. $drink->name .' also like:</h1>';
@@ -80,7 +80,7 @@ foreach($reviews->result() as $row)
 	foreach($other_drinks->result() as $row)
 	{
 		$no_drinks = FALSE;
-		echo $row->drink_name . '<br />';
+		echo '<a href="'.site_url('Drink/viewDrink/' . $row->drink_name).'" class="white">' . $row->drink_name . '</a><br /><br />';
 	}
 	if($no_drinks) echo 'No other drinks';
 	?>
