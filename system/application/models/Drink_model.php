@@ -5,6 +5,7 @@ class Drink_model extends Model {
     {
         parent::Model();
 		$this->load->database();
+        $this->load->library('update_library');
     }
 	
 	function get_all_drinks()
@@ -71,20 +72,21 @@ class Drink_model extends Model {
 	
 	function edit_drink($name, $description)
 	{
-	    $image_type = $_FILES['image']['type'];
-	    $image_data = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-        list($image_width, $image_height) = getimagesize($_FILES['image']['tmp_name']);
-	    $image_size = $_FILES['image']['size'];
-	    $image_ctgy = 'drink';
-	    $image_name = $name;
-	    
-	    $query = $this->db->query("UPDATE image SET image_type='".$image_type."', image='".$image_data."', image_height='".$image_height."', image_width='".$image_width."', image_size='".$image_size."', image_ctgy='".$image_ctgy."' WHERE image_name='".$image_name."'");
+        if ($_FILES['image']['tmp_name']) {
+    	    $image_type = $_FILES['image']['type'];
+    	    $image_data = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+            list($image_width, $image_height) = getimagesize($_FILES['image']['tmp_name']);
+    	    $image_size = $_FILES['image']['size'];
+    	    $image_ctgy = 'drink';
+    	    $image_name = $name;
+            
+    	    $query = $this->db->query("SELECT image_id FROM drink WHERE name='".$name."'");
+    	    $image_id = $query->row()->image_id;
+    	    $query = $this->db->query("UPDATE image SET image_type='".$image_type."', image='".$image_data."', image_height='".$image_height."', image_width='".$image_width."', image_size='".$image_size."', image_ctgy='".$image_ctgy."' WHERE image_id='".$image_id."'");
+		}
 		
-		$query = $this->db->query("SELECT * FROM image ORDER BY image_id DESC LIMIT 0,1");
-		$row = $query->row();
-		$image_id = $row->image_id;
-	    
-    	$query = $this->db->query("UPDATE drink SET image_id='".$image_id."', description='".$description."' WHERE name='".$name."'"); 
+	    if ($description)
+		    $this->update_library->update_drink($name, 'description', $description);
 	}
 	
 	function delete_drink($name)

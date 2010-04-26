@@ -5,6 +5,7 @@ class Bar_model extends Model {
     {
         parent::Model();
 		$this->load->database();
+        $this->load->library('update_library');
     }
 	
 	function get_all_bars()
@@ -77,22 +78,27 @@ class Bar_model extends Model {
 			('".$name."','".$image_id."','".$description."','".$address."','".$weburl."')");
 	}
 	
-	function edit_bar($name, $description, $specials, $address, $weburl)
+	function edit_bar($name, $description, $address, $weburl)
 	{
-	    $image_type = $_FILES['image']['type'];
-	    $image_data = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-        list($image_width, $image_height) = getimagesize($_FILES['image']['tmp_name']);
-	    $image_size = $_FILES['image']['size'];
-	    $image_ctgy = 'bar';
-	    $image_name = $name;
+        if ($_FILES['image']['tmp_name']) {
+    	    $image_type = $_FILES['image']['type'];
+    	    $image_data = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+            list($image_width, $image_height) = getimagesize($_FILES['image']['tmp_name']);
+    	    $image_size = $_FILES['image']['size'];
+    	    $image_ctgy = 'bar';
+    	    $image_name = $name;
 	    
-	    $query = $this->db->query("UPDATE image SET image_type='".$image_type."', image='".$image_data."', image_height='".$image_height."', image_width='".$image_width."', image_size='".$image_size."', image_ctgy='".$image_ctgy."' WHERE image_name='".$image_name."'");
-		
-		$query = $this->db->query("SELECT * FROM image ORDER BY image_id DESC LIMIT 0,1");
-		$row = $query->row();
-		$image_id = $row->image_id;
+    	    $query = $this->db->query("SELECT image_id FROM bar WHERE name='".$name."'");
+    	    $image_id = $query->row()->image_id;
+    	    $query = $this->db->query("UPDATE image SET image_type='".$image_type."', image='".$image_data."', image_height='".$image_height."', image_width='".$image_width."', image_size='".$image_size."', image_ctgy='".$image_ctgy."' WHERE image_id='".$image_id."'");
+		}
 	    
-    	$query = $this->db->query("UPDATE bar SET image_id='".$image_id."', description='".$description."', address='".$address."', weburl='".$weburl."' WHERE name='".$name."'"); 
+		if ($description)
+		    $this->update_library->update_bar($name, 'description', $description);
+		if ($address)
+		    $this->update_library->update_bar($name, 'address', $address);
+		if ($weburl)
+		    $this->update_library->update_bar($name, 'weburl', $weburl);
 	}
 	
 	function delete_bar($name)

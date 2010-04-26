@@ -12,7 +12,7 @@ echo '<table><tr><th><b>Drink Name</b></th><th><b>Description</b></th></tr>';
 foreach ($result->result() as $row)
 {
 	echo '<tr><td>';
-	echo $row->name . ' <a href="' . site_url('drink/delete/'.$row->name) . '" class="black">[DELETE]</a>';
+	echo '<a href="'.site_url('drink/viewDrink/'.$row->name).'">'.$row->name . '</a> <a href="' . site_url('drink/delete/'.$row->name) . '" class="black">[DELETE]</a>';
 	echo '</td><td>';
 	echo $row->description;
 	echo '</tr>';
