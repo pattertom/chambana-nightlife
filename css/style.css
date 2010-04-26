@@ -39,10 +39,18 @@ body{
 	border-top: 1px solid #000000;
 }
 
+.header_link_box {
+	position:absolute;
+	top: 0px;
+	left: 0 px;
+	height: 80px;
+	width:607px;
+}
+
 #buttons {
 	position: absolute;
 	top: 86px;
-	left: 2px;
+	left: 100px;
 	color: white;
 	font-family: verdana;
 	font-size: 11pt;
@@ -50,8 +58,8 @@ body{
 
 #searchbar {
 	position: absolute;
-	top: 7px;
-	right: -470px;
+	top: 9px;
+	left: 780px;
 	color: white;
 	font-family: verdana;
 	font-size: 11pt;
@@ -227,6 +235,25 @@ a.white:active {color:#ffffff}  /* selected link */
     font-weight:none;
 }
 
+.search_result_even {
+	background-color: #aaaaaa;
+	font-family:Verdana;
+	font-size:22px;
+	color:#444444;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left:4px;
+}
+.search_result_odd{
+	background-color: #999999;
+	font-family:Verdana;
+	font-size:22px;
+	color:#444444;
+	padding-top: 2px;
+	padding-left:4px;
+	padding-bottom: 2px;
+}
+
 td {
 	background-color: #D6D7D6;
 }
@@ -262,19 +289,21 @@ table.display td {
 .clear { clear: both; }
 
 div.autocomplete ul {
-   display:block;
-       list-style:none!important;
-       list-style-image:none!important;
-       margin:0px;
-       padding:0px;
-       
+	font-family:Trebuchet MS;
+	display:block;
+	list-style:none!important;
+	list-style-image:none!important;
+	margin:0px;
+	padding:0px;
+	color: black;
 }
 
 div.autocomplete ul li.selected {
-       background-color: #B9DAF0;
+	background-color: #f5812a;
 }
 
 div.autocomplete ul li {
+	background-color: #aaaaaa;
        font-size: small;
        list-style-type:none;
        display:block;

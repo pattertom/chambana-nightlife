@@ -3,7 +3,7 @@ class BarSpecial extends Controller {
 
 	function show_all()
 	{
-	    if ($this->session->userdata('admin') != TRUE)
+	    if ($this->session->userdata('admin') == FALSE)
 	        redirect('dashboard/index');
 	        
 		$this->load->model('BarSpecial_model');
@@ -15,7 +15,7 @@ class BarSpecial extends Controller {
 	
 	function index()
 	{
-	    if ($this->session->userdata('admin') != TRUE)
+	    if ($this->session->userdata('admin') == FALSE)
 	        redirect('dashboard/index');
 	        
 		$this->load->model('BarSpecial_model');
@@ -27,7 +27,7 @@ class BarSpecial extends Controller {
 
 	function insert()
 	{
-	    if ($this->session->userdata('admin') != TRUE)
+	    if ($this->session->userdata('admin') == FALSE)
 	        redirect('dashboard/index');
 	        
 		$this->load->view('header');
@@ -37,7 +37,7 @@ class BarSpecial extends Controller {
 	
 	function create()
 	{
-	    if ($this->session->userdata('admin') != TRUE)
+	    if ($this->session->userdata('admin') == FALSE)
 	        redirect('dashboard/index');
 	        
 		$this->load->model('BarSpecial_model');
@@ -59,7 +59,7 @@ class BarSpecial extends Controller {
 	
 	function delete($id)
 	{
-	    if ($this->session->userdata('admin') != TRUE)
+	    if ($this->session->userdata('admin') == FALSE)
 	        redirect('dashboard/index');
 	        
 		$this->load->model('BarSpecial_model');

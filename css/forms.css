@@ -25,3 +25,23 @@ select.selectStyled {
 	font: 11px arial;
 	border: 1px solid #000000;
 }
+
+.input_box  {
+	border:1px solid #2B7497;
+	color:#444444;
+	display:block;
+	height:20px;
+	padding:2px 3px 1px;
+	width:165px;
+	float:left;
+}
+
+input.searchbtn  {
+	background-color:#214772;
+	border:1px solid #f5812a;
+	color:#FFFFFF;
+	font:bold 84% 'trebuchet ms',helvetica,sans-serif;
+	float: right;
+	height: 25px;
+	margin-left: 2px;
+}

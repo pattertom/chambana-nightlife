@@ -9,10 +9,16 @@ class Event_model extends Model {
 	
     function get_all_events()
     {
-        $query = $this->db->query('SELECT * FROM event WHERE date > NOW() ORDER BY date');
+        $query = $this->db->query('SELECT * FROM event ORDER BY date');
         return $query;
     }
-    
+	
+	function get_upcoming_events()
+    {
+        $query = $this->db->query('SELECT * FROM event WHERE date > NOW() ORDER BY date LIMIT 0,8');
+        return $query;
+    }
+	 
     function get_all_events_with_ratings()
 	{
 		$query = $this->db->query("
@@ -84,9 +90,5 @@ class Event_model extends Model {
 		$query = $this->db->query("SELECT * FROM event WHERE name LIKE '%".$name."%'");
 		return $query;
 	}
-
-    
 }
-
-
 ?>

@@ -16,7 +16,7 @@ class Dashboard extends Controller {
 		$this->load->model('BarSpecial_model');
 		$this->load->model('Event_model');
 		$data['result'] = $this->BarSpecial_model->get_todays_specials();
-		$data['events'] = $this->Event_model->get_all_events();
+		$data['events'] = $this->Event_model->get_upcoming_events();
 		$data['title']  = 'Dashboard | CU Nightlife';   
 	    $this->load->view('Dashboard/dashboard_view', $data);
 	}

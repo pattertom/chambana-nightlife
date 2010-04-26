@@ -255,14 +255,15 @@ foreach($reviews->result() as $row)
         <!-- ++End Map Search Control Wizard Generated Code++ --> 
 		
 		<?php
-		echo '<br /><h1 class="underlined">Users who liked '. $bar->name .' also like:</h1>';
+		echo '<br /><h1 class="underlined">Users who liked '. $bar->name .' also like:</h1><div style="font-size: 15px">';
 		$noBars = TRUE;
 		foreach($otherBars->result() as $row)
 		{
 			$noBars = FALSE;
-			echo $row->barName . '<br />';
+			echo '<a href="'.site_url('bar/viewBar/' . $row->barName).'" class="white">' . $row->barName . '</a><br /><br />';
 		}
 		if($noBars) echo 'No other bars';
+		echo '</div>';
 		?>
     </div>
             

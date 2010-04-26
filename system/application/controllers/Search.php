@@ -41,6 +41,18 @@ class Search extends Controller {
 		$this->load->view('footer');
 	}
 	
+	function search_all()
+	{
+		$this->load->model('Search_model');
+		$search_term = $this->input->post('function_name');     
+		$data['bar'] = $this->Search_model->search_bars($search_term);
+		$data['event'] = $this->Search_model->search_events($search_term);
+		$data['drink'] = $this->Search_model->search_drinks($search_term);
+		$this->load->view('header');
+		$this->load->view('search/view_results', $data);
+		$this->load->view('footer');
+	}
+	
 	function searcher($name = "")
 	{
 		$this->load->model('Search_model');
@@ -52,5 +64,12 @@ class Search extends Controller {
 		$this->load->view('Search/Search_view', $data);
 		$this->load->view('footer');
 	}
+	
+	function ajaxsearch()
+    {
+        $function_name = $this->input->post('function_name');
+        $this->load->model('Search_model');
+        echo $this->Search_model->getSearchResults($function_name);
+    }
 }
 ?>

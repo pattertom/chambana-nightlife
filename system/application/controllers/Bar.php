@@ -8,7 +8,7 @@ class Bar extends Controller {
 	 */	
 	function show_all()
 	{
-	    if ($this->session->userdata('admin') != TRUE)
+	    if ($this->session->userdata('admin') == FALSE)
 	        redirect('dashboard/index');
 	        
 		$this->load->model('Bar_model');
@@ -28,7 +28,7 @@ class Bar extends Controller {
 		$this->load->model('Bar_model');
 		$this->load->model('image_model');
         
-		$data['extraHeadContent'] = '<script type="text/javascript" src="'. base_url().'js/function_search.js"></script>';
+		$data['extraHeadContent'] = '<script type="text/javascript" src="/js/function_search.js"></script>';
     	
         $data['result'] = $this->Bar_model->get_all_bars_with_ratings();
 		$images = array();
@@ -42,13 +42,6 @@ class Bar extends Controller {
 		$this->load->view('footer');
 	}
 
-    function ajaxsearch()
-    {
-        $function_name = $this->input->post('function_name');
-        $this->load->model('Bar_model');
-        echo $this->Bar_model->getSearchResults($function_name);
-    }
-
 	/**
 	 * insert
 	 *
@@ -56,7 +49,7 @@ class Bar extends Controller {
 	 */	
 	function insert()
 	{
-	    if ($this->session->userdata('admin') != TRUE)
+	    if ($this->session->userdata('admin') == FALSE)
 	        redirect('dashboard/index');
 	        
 		$this->load->view('header');
@@ -96,7 +89,7 @@ class Bar extends Controller {
 	
 	function create()
 	{
-	    if ($this->session->userdata('admin') != TRUE)
+	    if ($this->session->userdata('admin') == FALSE)
 	        redirect('dashboard/index');
             
 		$this->load->model('Bar_model');
@@ -121,7 +114,7 @@ class Bar extends Controller {
 	
 	function delete($name)
 	{	   
-	    if ($this->session->userdata('admin') != TRUE)
+	    if ($this->session->userdata('admin') == FALSE)
 	        redirect('dashboard/index');
 	    
 		$this->load->model('Bar_model');

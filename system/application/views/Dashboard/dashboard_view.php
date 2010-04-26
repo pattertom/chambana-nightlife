@@ -41,11 +41,12 @@ $this->load->helper('url');
 </div>
 <div class="contentRightColumn">
 	<?php
+	echo '<div class="title">Upcoming events</div><hr /><br />';
 	foreach ($events->result() as $row)
 	{
 		echo '<div class="itemContainer">';
 		echo '<div class="itemHeaderLeft"></div>';
-		echo '<div class="itemHeaderMiddle">'.$row->name.'</div>';
+		echo '<div class="itemHeaderMiddle">'.$row->name.' <div class="time">'.date("F j, Y", strtotime($row->date)).'</div></div>';
 		echo '<div class="itemHeaderRight"></div>';
 		echo '<br class="clear">';
 		echo '<div class="paragraph" style="padding-top: 5px;">';

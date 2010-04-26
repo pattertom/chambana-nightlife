@@ -55,30 +55,6 @@ class Bar_model extends Model {
 		$query = $this->db->query("SELECT * FROM bar WHERE name = '".$name."'");
 		return $query;
     }
-	
-	function getSearchResults ($name)
-	{
-	   
-	    $this->load->database();
-        $query = $this->db->query("SELECT name FROM bar WHERE name LIKE '%".$name."%'");
-        
-        //if($query->numRows()>0)
-        //{
-            	$output = '<ul>';
-			    foreach ($query->result() as $function_info) 
-                {
-		          $output .= '<li>' . $function_info->name . '</li>';
-				}
-		
-			$output .= '</ul>';
-			return $output;
-        //}
-        			//else {
-        			 //return '<p>Sorry, no results returned.</p>';
-                //}
-        
-		
-	}
     
 	function create_bar($name, $description, $specials, $address, $weburl)
 	{

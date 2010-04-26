@@ -36,5 +36,30 @@ class Search_model extends Model {
 		$query = $this->db->query("SELECT event.id, event.name, event.description, barspecial.id, barspecial.barName, barspecial.description description2 FROM event, barspecial WHERE event.name LIKE '%".$name."%' or barspecial.description LIKE '%".$name."%'");
 		return $query;
 	}
+	
+	function getSearchResults ($name)
+	{
+	    $this->load->database();
+        $queryBar = $this->db->query("SELECT bar.name FROM bar WHERE name LIKE '%".$name."%'");
+		$queryEvent = $this->db->query("SELECT event.name FROM event WHERE name LIKE '%".$name."%'");
+		$queryDrink = $this->db->query("SELECT drink.name FROM drink WHERE name LIKE '%".$name."%'");
+
+        $output = '<ul>';
+		foreach ($queryBar->result() as $function_info) 
+        {
+		    $output .= '<li>' . $function_info->name . '</li>';
+		}
+		foreach ($queryEvent->result() as $function_info) 
+		{
+		    $output .= '<li>' . $function_info->name . '</li>';
+		}
+		foreach ($queryDrink->result() as $function_info) 
+        {
+		    $output .= '<li>' . $function_info->name . '</li>';
+		}
+		
+		$output .= '</ul>';
+		return $output;    
+	}
 }
 ?>
