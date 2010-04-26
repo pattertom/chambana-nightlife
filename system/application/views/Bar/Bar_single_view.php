@@ -168,7 +168,7 @@ foreach($reviews->result() as $row)
 <div class="contentRightColumn">
 	<center><?php echo $image; ?></center>
 	<h1 class="underlined">User Rating</h2>
-    <div class="paragraph"><?php echo $bar->name; ?> has an average user rating of <b><?php echo $averageRating->average; ?></b></div>
+    <div class="paragraph"><?php echo $bar->name; ?> has an average user rating of <b><?php echo (float)$averageRating->average; ?></b></div>
 	<h1 class="underlined">Address</h2>
     <div class="paragraph"><?php echo $bar->address?></div>
     

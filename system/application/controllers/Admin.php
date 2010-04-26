@@ -13,7 +13,7 @@ class Admin extends Controller {
 	
 	function edit_event()
 	{
-	    if ($this->session->userdata('admin') == FALSE)
+	    if ($this->session->userdata('admin') != TRUE)
 	        redirect('dashboard/index');
 	    
 		$this->load->model('Event_model');
@@ -36,7 +36,7 @@ class Admin extends Controller {
 	
 	function edit_drink()
 	{
-	    if ($this->session->userdata('admin') == FALSE)
+	    if ($this->session->userdata('admin') != TRUE)
 	        redirect('dashboard/index');
 	        
 		$this->load->model('Drink_model');
@@ -53,7 +53,7 @@ class Admin extends Controller {
 	
 	function edit_bar()
 	{
-	    if ($this->session->userdata('admin') == FALSE)
+	    if ($this->session->userdata('admin') != TRUE)
 	        redirect('dashboard/index');
             
 		$this->load->model('Bar_model');

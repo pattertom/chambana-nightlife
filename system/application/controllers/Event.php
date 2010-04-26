@@ -3,7 +3,7 @@ class Event extends Controller {
 
 	function show_all()
 	{
-	    if ($this->session->userdata('admin') == FALSE)
+	    if ($this->session->userdata('admin') != TRUE)
 	        redirect('dashboard/index');
 	        
 		$this->load->model('Event_model');
@@ -31,7 +31,7 @@ class Event extends Controller {
 
 	function insert()
 	{
-	    if ($this->session->userdata('admin') == FALSE)
+	    if ($this->session->userdata('admin') != TRUE)
 	        redirect('dashboard/index');
 	        
 		$this->load->view('header');
@@ -41,7 +41,7 @@ class Event extends Controller {
 	
 	function create()
 	{
-	    if ($this->session->userdata('admin') == FALSE)
+	    if ($this->session->userdata('admin') != TRUE)
 	        redirect('dashboard/index');
 	    
 		$this->load->model('Event_model');
@@ -64,7 +64,7 @@ class Event extends Controller {
 	
 	function delete($id)
 	{
-	    if ($this->session->userdata('admin') == FALSE)
+	    if ($this->session->userdata('admin') != TRUE)
 	        redirect('dashboard/index');
 	        
 		$this->load->model('Event_model');

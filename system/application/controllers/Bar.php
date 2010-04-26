@@ -8,7 +8,7 @@ class Bar extends Controller {
 	 */	
 	function show_all()
 	{
-	    if ($this->session->userdata('admin') == FALSE)
+	    if ($this->session->userdata('admin') != TRUE)
 	        redirect('dashboard/index');
 	        
 		$this->load->model('Bar_model');
@@ -56,7 +56,7 @@ class Bar extends Controller {
 	 */	
 	function insert()
 	{
-	    if ($this->session->userdata('admin') == FALSE)
+	    if ($this->session->userdata('admin') != TRUE)
 	        redirect('dashboard/index');
 	        
 		$this->load->view('header');
@@ -96,7 +96,7 @@ class Bar extends Controller {
 	
 	function create()
 	{
-	    if ($this->session->userdata('admin') == FALSE)
+	    if ($this->session->userdata('admin') != TRUE)
 	        redirect('dashboard/index');
             
 		$this->load->model('Bar_model');
@@ -121,7 +121,7 @@ class Bar extends Controller {
 	
 	function delete($name)
 	{	   
-	    if ($this->session->userdata('admin') == FALSE)
+	    if ($this->session->userdata('admin') != TRUE)
 	        redirect('dashboard/index');
 	    
 		$this->load->model('Bar_model');
