@@ -129,7 +129,7 @@ echo '</table>';
 */
 echo '<h1 class="underlined">Reviews</h1>';
 echo '<div class="paragraph">Leave a review <br />';
-if(!$reviewed) 
+if(!$reviewed)
 {
 	echo form_open_multipart('barReview/create/'.$bar->name);
 	echo '<input type="hidden" name="barName" value="'.$bar->name.'">';

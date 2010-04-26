@@ -18,6 +18,34 @@ class Drink_model extends Model {
 		$query = $this->db->query("SELECT * FROM drink WHERE name = '".$name."'");
 		return $query;
     }
+    
+    function get_all_drinks_with_ratings()
+	{
+		$query = $this->db->query("
+			SELECT drink.name, C.average, drink.image_id
+			FROM drink LEFT JOIN 
+				(SELECT drink_review.drink_name, AVG(drink_review.rating) as average
+				FROM drink_review
+				WHERE approved_by_admin = 1
+				GROUP BY drink_review.drink_name) C
+			ON drink.name = C.drink_name
+			GROUP BY drink.name
+			ORDER BY C.average DESC
+		");
+		return $query;
+	}
+	
+	function get_drinks_also_liked($name)
+	{
+		$query = $this->db->query("
+			SELECT T2.drink_name, COUNT(T2.drink_name) as count
+			FROM drink_review T1, drink_review T2
+			WHERE T1.rating >= 7 AND T2.rating >= 7 AND T1.user_name = T2.user_name AND T1.drink_name = '".$name."' AND T2.drink_name != '".$name."'
+			GROUP BY T2.drink_name
+			ORDER BY count DESC LIMIT 0,5;
+		");
+		return $query;
+	}
 	
 	function create_drink($name, $description)
 	{

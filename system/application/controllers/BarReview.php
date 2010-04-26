@@ -6,7 +6,7 @@ class BarReview extends Controller {
 		$this->load->model('BarReview_model');
 		$data['result'] = $this->BarReview_model->get_all_barreviews();
 		$this->load->view('header');
-		$this->load->view('BarReview/BarRevew_view', $data);
+		$this->load->view('BarReview/BarReview_view', $data);
 		$this->load->view('footer');
 	}
 	

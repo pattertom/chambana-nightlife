@@ -8,11 +8,6 @@ class Dashboard extends Controller {
 
 	function index()
 	{
-	    if ($this->session->userdata('logged_in') != TRUE)
-	    {
-	        redirect('login/index');
-	    }
- 
 		$this->load->model('BarSpecial_model');
 		$this->load->model('Event_model');
 		$data['result'] = $this->BarSpecial_model->get_todays_specials();
@@ -32,6 +27,8 @@ class Dashboard extends Controller {
 		$data['barreviews'] = $this->BarReview_model->get_non_approved_reviews();
 		$this->load->model('EventReview_model');
 		$data['eventreviews'] = $this->EventReview_model->get_non_approved_reviews();
+		$this->load->model('drink_review_model');
+		$data['drinkreviews'] = $this->drink_review_model->get_non_approved_reviews();
 		$this->load->view('header');
 		$this->load->view('Dashboard/admin_approvals', $data);
 		$this->load->view('footer');

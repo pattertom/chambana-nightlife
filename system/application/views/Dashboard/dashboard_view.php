@@ -9,6 +9,7 @@ $this->load->helper('url');
 		echo '<div class="adminToolBox">';
 		echo '<div class="descriptionTitle">Admin Toolbox</div>';
 		echo '<a href="'. site_url('/dashboard/adminApprovals').'" class="white">See awaiting bar reviews</a><br />';
+		echo '<a href="'. site_url('/dashboard/adminApprovals').'" class="white">See awaiting drink reviews</a><br />';
 		echo '<a href="'. site_url('/dashboard/adminApprovals').'" class="white">See awaiting event reviews</a><br /><br /></div><br />';
 	}
 	?>
@@ -32,7 +33,6 @@ $this->load->helper('url');
 		echo '</tr></table>';
 		
 		//Begin simple xml for weather
-		//TODO: Trim the description string so its just the condition and temp (no image)
 		$xml = simplexml_load_file("http://feeds.weatherbug.com/rss.aspx?zipcode=61801&feed=currtxt&zcode=z4641");
 		echo "<br />Going to the bars?  Here's the weather right now:<br /><br />";
 		echo $xml->channel->item[0]->description;

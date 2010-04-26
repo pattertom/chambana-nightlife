@@ -99,6 +99,22 @@ if (!$response)
 **/
 
 
+// create drink_review table
+echo('<br />Creating drink_review table...<br />');
+$response = mysql_query("CREATE TABLE IF NOT EXISTS drink_review (
+    id int(11) NOT NULL auto_increment,
+    user_name varchar(100) NOT NULL,
+    drink_name varchar(50) NOT NULL,
+    approved_by_admin tinyint(1) default 0,
+	rating int(11),
+	review_content varchar(500),
+    ts TIMESTAMP default CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+);");
+
+if (!$response)
+    echo('drink_review table failed: ' . mysql_error());
+
 // create BarReview table
 echo('<br />Creating BarReview table...<br />');
 $response = mysql_query("CREATE TABLE IF NOT EXISTS BarReview (

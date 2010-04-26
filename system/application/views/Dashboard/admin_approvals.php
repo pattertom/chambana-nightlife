@@ -30,6 +30,35 @@ foreach ($barreviews->result() as $row)
 }
 echo '</table>';
 
+echo '<h3 class="underlined">Drink Reviews Awaiting Approval</h3>';
+echo '<table><tr><th><b>Drink Review ID</b></th><th><b>User Name</b></th>
+										   <th><b>Drink Name</b></th>
+										   <th><b>Approved?</b></th>
+										   <th><b>Rating</b></th>
+										   <th><b>Review Content</b></th>
+										   <th><b>TS</b></td></th>';
+
+foreach ($drinkreviews->result() as $row)
+{
+	echo '<tr><td>';
+	echo $row->id . ' <a href="' . site_url('drink_review/delete/'.$row->id) . '" class="black">[DELETE]</a>
+					  <a href="' . site_url('drink_review/approve/'.$row->id) . '" class="black">[APPROVE]</a>';
+	echo '</td><td>';
+	echo $row->user_name;
+	echo '</td><td>';
+	echo $row->drink_name;
+	echo '</td><td>';
+	echo $row->approved_by_admin;
+	echo '</td><td>';
+	echo $row->rating;
+	echo '</td><td>';
+	echo $row->review_content;
+	echo '</td><td>';
+	echo $row->ts;
+	echo '</tr>';
+}
+echo '</table>';
+
 echo '<h3 class="underlined">Event Reviews Awaiting Approval</h3>';
 echo '<table><tr>
                                             <th><b>Event Review ID</b></th>
