@@ -1,6 +1,7 @@
 <?php
 echo $this->load->view('header');
 $this->load->helper('url');
+$this->load->helper('array');
 ?>
 <div class="contentLeftColumn">
 	<h3>Dashboard</h3>
@@ -15,22 +16,50 @@ $this->load->helper('url');
 	?>
 	<div class="title">
 		<?php 
+		/**
+		** Display the table for the days specials
+		**/
+		
 		echo 'Specials for '.date("l").'!</div>';
-		echo '<table><tr>';
+		$bars = array();
+		$previousBar = "";
+		$count = -1;
+		$barDrinkCount = 1;
+		$highestCount = 0;
+		
+		// Go through the array, add each drink to its respective bar.
+		// This assumes that the mysql query returned results sorted by 
+		// bar name.
 		foreach ($result->result() as $row)
 		{
-			echo '<th>';
-			echo $row->barName;
-			echo '</th>';
+			if($previousBar = "" || $previousBar != $row->barName) 
+			{
+				$count++;
+				$barDrinkCount = 1;
+				$bars[$count][0] = $row->barName;
+				$bars[$count][$barDrinkCount] = $row->description;
+			}	
+			else $bars[$count][$barDrinkCount] = $row->description;
+			$barDrinkCount++;
+			if($barDrinkCount > $highestCount) $highestCount = $barDrinkCount;
 		}
-		echo '</tr><tr>';
-		foreach ($result->result() as $row)
+		echo '<table>';
+		for($y = 0; $y <= $highestCount; $y++)
 		{
-			echo '<td>';
-			echo $row->description;
-			echo '</td>';
+			echo '<tr>';
+			for($x = 0; $x < count($bars); $x++)
+			{
+				if(count($bars[$x]) > $y)
+				{
+					if($y == 0) echo '<th>'.$bars[$x][$y].'</th>';
+					else echo '<td>'.$bars[$x][$y].'</td>';
+				}
+			}
+			echo '</tr>';
 		}
-		echo '</tr></table>';
+		echo '</table>';
+		
+		// END TABLE 
 		
 		//Begin simple xml for weather
 		$xml = simplexml_load_file("http://feeds.weatherbug.com/rss.aspx?zipcode=61801&feed=currtxt&zcode=z4641");
