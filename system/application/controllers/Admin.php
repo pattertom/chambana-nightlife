@@ -21,12 +21,14 @@ class Admin extends Controller {
 		$name = $this->input->post('name');
         $price = $this->input->post('price');
 		$type = $this->input->post('type');
+		$tags = $this->input->post('tags');
+		$tags = explode(",", $tags);
         $description = $this->input->post('description');
         $date = $this->input->post('date');
         $address = $this->input->post('address');
         
         if ($name)
-            $this->Event_model->edit_event($name, $price, $type, $description, $date, $address);
+            $this->Event_model->edit_event($name, $price, $type, $description, $date, $address, $tags);
             
 		$data['result'] = $this->Event_model->get_all_events();
 		$this->load->view('header');

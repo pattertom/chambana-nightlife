@@ -53,7 +53,7 @@ class Event_model extends Model {
 		return $query;
     }
 	
-    function create_event($name, $price, $type, $description, $date, $address)
+    function create_event($name, $price, $type, $description, $date, $address, $tags)
 	{
 	    $image_type = $_FILES['image']['type'];
 	    $image_data = addslashes(file_get_contents($_FILES['image']['tmp_name']));
@@ -62,6 +62,7 @@ class Event_model extends Model {
 	    $image_ctgy = 'event';
 	    $image_name = $name;
 	    
+	    // insert image
 	    $query = $this->db->query("INSERT INTO image (image_type, image, image_height, image_width, image_size, image_ctgy, image_name) VALUES
 			('".$image_type."','".$image_data."','".$image_height."','".$image_width."','".$image_size."','".$image_ctgy."','".$image_name."')");
 		
@@ -69,12 +70,23 @@ class Event_model extends Model {
 		$row = $query->row();
 		$image_id = $row->image_id;
 	    
+	    // insert other columns
     	$query = $this->db->query("INSERT INTO event (name, image_id, price, type, description, date, address) 
                 VALUES ('".$name."', '".$image_id."', '".$price."', '".$type."', '".$description."', '".$date."'
                  , '".$address."')");
+                 
+    	$query = $this->db->query("SELECT * FROM event ORDER BY id DESC LIMIT 0,1");
+ 		$row = $query->row();
+ 		$event_id = $row->id;
+                 
+        // insert tags
+ 	    foreach($tags as $tag) {
+ 	        $query = $this->db->query("INSERT INTO tag (event_id, tag_name) 
+                     VALUES ('".$event_id."', '".$tag."')");
+ 	    }
 	}
 	
-	function edit_event($name, $price, $type, $description, $date, $address)
+	function edit_event($name, $price, $type, $description, $date, $address, $tags)
 	{
         if ($_FILES['image']['tmp_name']) {
     	    $image_type = $_FILES['image']['type'];
@@ -99,6 +111,18 @@ class Event_model extends Model {
 		    $this->update_library->update_event($name, 'date', $date);
 		if ($address)
 		    $this->update_library->update_event($name, 'address', $address);
+		
+		if ($tags) {
+		    $query = $this->db->query("SELECT * FROM event WHERE name='".$name."'");
+     		$row = $query->row();
+     		$event_id = $row->id;
+
+            // insert tags
+     	    foreach($tags as $tag) {
+     	        $query = $this->db->query("INSERT INTO tag (event_id, tag_name) 
+                         VALUES ('".$event_id."', '".$tag."')");
+     	    }
+		}
 	}
 	
 	function delete_event($id)

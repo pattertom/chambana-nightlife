@@ -5,7 +5,7 @@ dbConnect();
 
 // create Drink table
 echo('<br />Creating Drink table...<br />');
-$response = mysql_query("CREATE TABLE IF NOT EXISTS Drink (
+$response = mysql_query("CREATE TABLE IF NOT EXISTS drink (
   name varchar(50) NOT NULL,
   image_id int(11) NOT NULL default -1,
   description varchar(400),
@@ -17,7 +17,7 @@ if (!$response)
 
 // create Bar table
 echo('<br />Creating Bar table...<br />');
-$response = mysql_query("CREATE TABLE IF NOT EXISTS Bar (
+$response = mysql_query("CREATE TABLE IF NOT EXISTS bar (
   name varchar(50) NOT NULL,
   image_id int(11) NOT NULL default -1,
   description varchar(1000),
@@ -32,7 +32,7 @@ if (!$response)
 // create Location table
 // TODO: Add google map coordinates as a column
 echo('<br />Creating Location table...<br />');
-$response = mysql_query("CREATE TABLE IF NOT EXISTS Location (
+$response = mysql_query("CREATE TABLE IF NOT EXISTS location (
   address varchar(400) NOT NULL,
   type varchar(20) NOT NULL,
   PRIMARY KEY (address)
@@ -43,7 +43,7 @@ if (!$response)
 
 // create Event table
 echo('<br />Creating Event table...<br />');
-$response = mysql_query("CREATE TABLE IF NOT EXISTS Event (
+$response = mysql_query("CREATE TABLE IF NOT EXISTS event (
   id int(11) NOT NULL auto_increment,
   name varchar(50) NOT NULL,
   image_id int(11) NOT NULL default -1,
@@ -60,7 +60,7 @@ if (!$response)
 
 // create user table
 echo('<br />Creating User table...<br />');
-$response = mysql_query("CREATE TABLE IF NOT EXISTS User (
+$response = mysql_query("CREATE TABLE IF NOT EXISTS user (
   username varchar(100) NOT NULL,
   level int(11) NOT NULL default 0,
   hash varchar(136) NOT NULL default 0,
@@ -74,7 +74,7 @@ if (!$response)
 
 // create Sells table
 echo('<br />Creating Sells table...<br />');
-$response = mysql_query("CREATE TABLE IF NOT EXISTS Sells (
+$response = mysql_query("CREATE TABLE IF NOT EXISTS sells (
     drinkName varchar(50) NOT NULL,
     barName varchar(50) NOT NULL,
     price int(11) NOT NULL,
@@ -117,7 +117,7 @@ if (!$response)
 
 // create BarReview table
 echo('<br />Creating BarReview table...<br />');
-$response = mysql_query("CREATE TABLE IF NOT EXISTS BarReview (
+$response = mysql_query("CREATE TABLE IF NOT EXISTS barreview (
     id int(11) NOT NULL auto_increment,
     userName varchar(100) NOT NULL,
     barName varchar(50) NOT NULL,
@@ -164,7 +164,7 @@ if (!$response)
     
 // create Image table
 echo('<br />Creating Image table...<br />');
-$response = mysql_query("CREATE TABLE IF NOT EXISTS Image (
+$response = mysql_query("CREATE TABLE IF NOT EXISTS image (
     image_id int(11) not null auto_increment,
     image_type varchar(25) not null default '',
     image MEDIUMblob not null,
